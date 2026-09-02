@@ -1,0 +1,383 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* v4 自动源检测未覆盖 Nuxt 4 的 app/ 结构，显式声明扫描范围 */
+@source "../../**/*.{vue,ts,js}";
+
+/*
+  Fira Code：仅用于代码与元信息（等宽）。
+  用原版而非 Nerd Font 版——后者含数千个终端图标字形，体积 2.6MB 且网页用不到。
+  已转 woff2：283KB -> 101KB。font-display:swap 避免首屏文字不可见。
+*/
+@font-face {
+  font-family: "Fira Code";
+  src: url("../fonts/FiraCode-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url("../fonts/FiraCode-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  Editorial Grid / Magazine 设计系统
+  颜色一律走 CSS 变量，暗色模式由 <html class="dark"> 切换变量值，
+  不依赖 Tailwind 的 dark: 变体，避免与版本特性耦合。
+*/
+
+:root {
+  /* 三层表面：surface(白) > bg(冷灰) > code-block(更深)，拉开层次避免卡片浮不出来 */
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --fg-subtle: #64748b;
+  --border: #cbd5e1;
+  --border-strong: #94a3b8;
+
+  /* 结构色：承担标题强调、主按钮、栏目粗线 */
+  --primary: #1e3a5f;
+  --on-primary: #ffffff;
+
+  /* 强调色（引文金）：#B45309 在冷灰底上约 5.5:1，装饰与文字可共用同一值 */
+  --accent: #b45309;
+  --accent-text: #b45309;
+  --accent-soft: #fef3c7;
+
+  --code-bg: #f1f5f9;
+  --code-block-bg: #f1f5f9;
+
+  /*
+    正文走系统字体栈，不加载 Web 字体：中文字体动辄 10-20MB，
+    子集化后仍有数 MB，对静态博客是不可接受的首屏代价。
+    若将来要加 Editorial 的 serif 标题，建议只加载西文 serif（约 50KB），
+    中文继续回落到系统黑体。
+  */
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+
+  --measure: 68ch;
+  --header-h: 4rem;
+
+  /*
+    编辑风字号阶梯。用 clamp 而非固定断点，是因为中文字面比西文占位重，
+    56px 以上的中文标题在窄屏会压迫，需要随视口连续收敛。
+    比例接近 1.4 倍数列：hero 80 / h1 56 / h2 36 / h3 26 / body 17 / meta 13
+  */
+  --text-hero: clamp(2.75rem, 8vw, 5rem);
+  --text-h1: clamp(2rem, 5.5vw, 3.5rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.625rem);
+  --text-body: 1.0625rem;
+  --text-meta: 0.8125rem;
+
+  /* 栏线：编辑风靠粗细两级线建立层次，而非阴影或色块 */
+  --rule: 1px;
+  --rule-bold: 2px;
+}
+
+.dark {
+  /* 深 navy 底而非纯黑，与 primary 同源，保持学术出版的冷调 */
+  --bg: #0b1220;
+  --surface: #131c2e;
+  --surface-2: #1a2333;
+  --fg: #f1f5f9;
+  --fg-muted: #94a3b8;
+  --fg-subtle: #7c8aa0;
+  --border: #253044;
+  --border-strong: #3a4759;
+
+  /* 暗底下 navy 需提亮才可读，主按钮改为浅底深字 */
+  --primary: #93b4e8;
+  --on-primary: #0b1220;
+
+  --accent: #f0a94c;
+  --accent-text: #f5c87f;
+  --accent-soft: #3a2a10;
+
+  --code-bg: #1a2333;
+  --code-block-bg: #0f1826;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  /* 锚点跳转时给固定头部留出空间 */
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 可见的键盘焦点环，任何情况下不移除 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  /* 用 --bg 而非固定白色：暗色下强调色变亮金，白字会掉到 1.9:1 */
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- 语义工具类 ---------- */
+.u-surface {
+  background-color: var(--surface);
+}
+.u-muted {
+  color: var(--fg-muted);
+}
+.u-subtle {
+  color: var(--fg-subtle);
+}
+.u-line {
+  border-color: var(--border);
+}
+.u-mono {
+  font-family: var(--font-mono);
+}
+.u-accent {
+  color: var(--accent-text);
+}
+
+/* ---------- 编辑风排版工具类 ---------- */
+
+/* 字号阶梯 */
+.u-hero {
+  font-size: var(--text-hero);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.u-h1 {
+  font-size: var(--text-h1);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+}
+.u-h2 {
+  font-size: var(--text-h2);
+  line-height: 1.18;
+  letter-spacing: -0.022em;
+  font-weight: 650;
+}
+.u-h3 {
+  font-size: var(--text-h3);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+.u-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--fg-subtle);
+}
+
+/*
+  栏目标记（kicker）：粗线 + 等宽小字，是编辑风区隔版块的标志性手法。
+  用在版块标题上方，替代单纯加大字号来制造层次。
+*/
+.u-kicker {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.u-rule-bold {
+  border-top: var(--rule-bold) solid var(--primary);
+}
+.u-rule {
+  border-top: var(--rule) solid var(--border);
+}
+
+/* 编辑风下划线：hover 时由左向右展开 */
+.u-underline {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size 220ms ease-out;
+}
+.u-underline:hover,
+.u-underline:focus-visible {
+  background-size: 100% 2px;
+}
+
+/* ---------- Markdown 正文（prose）主题 ---------- */
+.prose {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-lead: var(--fg-muted);
+  --tw-prose-links: var(--accent-text);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--fg-muted);
+  --tw-prose-bullets: var(--border-strong);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--fg-subtle);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-code: var(--fg);
+  --tw-prose-pre-bg: var(--code-block-bg);
+  --tw-prose-th-borders: var(--border-strong);
+  --tw-prose-td-borders: var(--border);
+
+  max-width: var(--measure);
+  font-size: var(--text-body);
+  line-height: 1.75;
+}
+
+.dark .prose {
+  --tw-prose-pre-bg: var(--code-block-bg);
+  --tw-prose-pre-code: var(--fg);
+}
+
+/* 标题层次：编辑风的强对比与紧收字距 */
+.prose :where(h1, h2, h3, h4) {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+/*
+  正文里的 markdown h1 降级为 h2 视觉。
+  17/28 篇文章把 h1 当章节标题用，与页面模板 h1（frontmatter title）重复；
+  这里只降视觉层级、不隐藏内容，避免破坏既有文章结构。
+*/
+.prose :where(h1) {
+  font-size: var(--text-h2);
+  line-height: 1.18;
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: var(--rule) solid var(--border);
+}
+.prose :where(h1:first-child) {
+  margin-top: 0;
+}
+.prose :where(h2) {
+  margin-top: 2.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+.prose :where(h3) {
+  margin-top: 2em;
+}
+
+/* 行内代码：等宽 + 弱底色，去掉插件默认的反引号 */
+.prose :where(code):not(:where(pre code)) {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  font-weight: 500;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+.prose :where(code):not(:where(pre code))::before,
+.prose :where(code):not(:where(pre code))::after {
+  content: none;
+}
+
+.prose :where(pre) {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/*
+  Shiki 双主题代码块：亮色走 github-light、暗色走 github-dark。
+  Shiki 把两套色都写进了行内 CSS 变量，这里按当前主题取用其一。
+  选择器特异性需高于 typography 的 :where(pre)，故不加 :where。
+*/
+.prose pre.shiki,
+.prose pre.shiki span {
+  color: var(--shiki-default);
+  font-style: var(--shiki-default-font-style);
+  font-weight: var(--shiki-default-font-weight);
+  text-decoration: var(--shiki-default-text-decoration);
+}
+.prose pre.shiki {
+  /* 背景取自有变量：--shiki-*-bg 未必挂在 pre 上，直接引用会落空 */
+  background-color: var(--code-block-bg);
+}
+.dark .prose pre.shiki,
+.dark .prose pre.shiki span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+.dark .prose pre.shiki {
+  background-color: var(--code-block-bg);
+}
+
+/* 引用块：编辑风左侧强调条 */
+.prose :where(blockquote) {
+  font-style: normal;
+  border-left-width: 3px;
+  background: var(--accent-soft);
+  padding: 0.75em 1.25em;
+  border-radius: 0 6px 6px 0;
+}
+.prose :where(blockquote p:first-of-type)::before,
+.prose :where(blockquote p:last-of-type)::after {
+  content: none;
+}
+
+.prose :where(img) {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  /* 避免图片加载时的布局抖动 */
+  height: auto;
+}
+
+.prose :where(table) {
+  font-size: 0.9375rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose :where(a) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 180ms ease-out;
+}
+.prose :where(a:hover) {
+  color: var(--accent);
+}

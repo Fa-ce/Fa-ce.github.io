@@ -1,0 +1,77 @@
+{
+  "$schema": "内容分类字典 —— 唯一权威来源，所有 frontmatter 的 category/tags 必须取自本文件",
+  "version": "1.0.0",
+  "updated": "2026-07-29",
+  "status": "已确认生效",
+
+  "_rules": {
+    "category": "单选、必填、决定 URL (/category/<slug>)。上线后禁止变更已有文章的 category，否则 URL 失效丢外链。宁可先粗后细。",
+    "tags": "多选、可选、建议 2-5 个、不进 URL。随时可增删改，零成本。",
+    "扩展规则": "新增 category 需满足：预计至少 3 篇文章、与现有分类无语义重叠。新增 tag 无门槛，但先查白名单避免近义词（如 已有 vue3 就不要再造 vue-3）。",
+    "禁止": "临场造词。每批处理只能从本文件选取，如需新增必须先更新本文件再使用。"
+  },
+
+  "categories": [
+    {
+      "slug": "source-code",
+      "name": "源码解析",
+      "desc": "框架/库的源码级剖析，含实现原理与设计模式",
+      "channel": "blog"
+    },
+    {
+      "slug": "devops",
+      "name": "环境与工程化",
+      "desc": "开发环境搭建、网络配置、构建工具、部署流程、疑难排查",
+      "channel": "blog"
+    },
+    {
+      "slug": "visualization",
+      "name": "数据可视化",
+      "desc": "图表库、图形引擎的实战用法",
+      "channel": "docs"
+    },
+    {
+      "slug": "standards",
+      "name": "团队规范",
+      "desc": "编码规范、协作约定、最佳实践",
+      "channel": "docs"
+    },
+    {
+      "slug": "fundamentals",
+      "name": "基础与原理",
+      "desc": "语言特性、协议、浏览器机制等底层知识",
+      "channel": "docs"
+    },
+    {
+      "slug": "toolchain",
+      "name": "工具链",
+      "desc": "日常开发工具、库、资源的使用技巧",
+      "channel": "docs"
+    },
+    {
+      "slug": "interview",
+      "name": "面试题",
+      "desc": "面试考点整理与解析",
+      "channel": "docs"
+    }
+  ],
+
+  "tags": {
+    "_说明": "按域分组仅为便于查阅，实际使用时是扁平的",
+    "语言与运行时": ["javascript", "typescript", "es6", "html", "css", "nodejs"],
+    "框架与库": ["vue", "vue3", "vuex", "vue-router", "axios", "echarts", "gojs", "webpack", "vite", "canvas", "svg"],
+    "环境与系统": ["wsl2", "linux", "windows", "nvm", "npm", "pnpm", "network", "proxy", "port-forwarding"],
+    "概念与主题": ["source-code", "reactivity", "module-system", "http", "websocket", "design-pattern", "performance", "debugging", "browser", "font"],
+    "内容形态": ["guide", "troubleshooting", "cheatsheet", "best-practice", "notes"]
+  },
+
+  "frontmatter_schema": {
+    "title": "string, 必填, 展示用中文标题",
+    "description": "string, 必填, 一句话摘要, 用于列表页和 SEO",
+    "date": "YYYY-MM-DD, 必填, 无原始日期时用文件 mtime",
+    "category": "string, 必填, 必须是 categories[].slug 之一",
+    "tags": "string[], 建议 2-5 个, 必须来自 tags 白名单",
+    "draft": "boolean, 可选, true 则不进列表页与 sitemap",
+    "source": "string, 可选, 标注原始出处, 转载内容必填"
+  }
+}
