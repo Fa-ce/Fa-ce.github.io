@@ -302,6 +302,9 @@ a {
   font-family: var(--font-mono);
   font-size: 0.875em;
   font-weight: 500;
+  /* 来源路径、包名等连续字符串不能撑破窄屏正文。 */
+  overflow-wrap: anywhere;
+  word-break: break-word;
   background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: 4px;

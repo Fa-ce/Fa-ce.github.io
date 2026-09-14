@@ -1,6 +1,6 @@
 ---
 title: HTML 基础笔记
-description: HTML 语法规范、常用标签、表格与表单元素速查。
+description: HTML 语法规范、常用标签、表格、表单、Canvas 入门与 JavaScript 输出方式速查。
 date: 2022-06-10
 category: fundamentals
 tags: [html, notes, cheatsheet]
@@ -8,6 +8,8 @@ source: 尚学堂前端课程学习笔记（2021—2022）
 ---
 
 # HTML 基础
+
+整理自尚学堂课程笔记 `HTML笔记.txt`、`HTML笔记(1).txt` 和 `HTML.txt`。前两份内容重复，已合并去重；后一份补充 Canvas、JavaScript 输出与 WebSocket 入门记录。
 
 - **网站**是网页的集合，**网页**是 HTML 格式文件，通过浏览器阅读，是构成网站的基本元素。
 - **HTML**（超文本标记语言）是一套标记标签。
@@ -198,9 +200,41 @@ source: 尚学堂前端课程学习笔记（2021—2022）
 
 `video`、`audio`、`canvas`、`svg`。
 
-其中 `<canvas>` 有两个容易踩坑的地方：
+### Canvas 画布
+
+`<canvas>` 是画布元素，通过 JavaScript 绘制图像。`getContext('2d')` 获取二维绘图上下文（context），后续绘图操作通过这个对象完成：
+
+```html
+<canvas id="canvas" width="300" height="150"></canvas>
+<script>
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  if (context) {
+    context.fillStyle = 'dodgerblue';
+    context.fillRect(10, 10, 100, 50);
+  }
+</script>
+```
+
+画布的默认值与尺寸设置：
 
 - 默认宽 300px、高 150px，画布默认是**透明**的。
+- 可以通过 CSS 设置画布元素的背景色。
 - `width` / `height` **属性**和 CSS 设置的宽高不是一回事。JS 读到的是 DOM 节点上的属性值，而用 CSS 改尺寸只是把已绘制的内容拉伸，会导致图像变形。
 
-绘制方案的选型与具体 API 见 [Canvas 与 SVG 绘图方案选型](/docs/canvas-vs-svg)，`WebSocket` 见 [WebSocket 基础](/docs/websocket-basics)。
+绘制方案的选型与具体 API 见 [Canvas 与 SVG 绘图方案选型](/docs/canvas-vs-svg)。
+
+## JavaScript 常见输出方式
+
+| 方式 | 示例 | 说明 |
+| --- | --- | --- |
+| 弹窗 | `alert('提示信息')` | 弹出提示框，关闭前会暂停后续脚本执行 |
+| 页面节点 | `document.body.append('页面文字')` | 在节点末尾追加文本；需在目标节点存在后调用，也可以追加 DOM 节点 |
+| 文档流 | `document.write('页面文字')` | 向文档流写入内容；页面加载完成后调用可能清空已有页面，不用于常规页面更新 |
+| 控制台 | `console.log('调试信息')` | 在开发者工具的控制台中输出，常用于调试 |
+
+## WebSocket 入门
+
+WebSocket 是独立的通信协议，浏览器通过 JavaScript API 使用它。连接建立后，客户端与服务端可以在同一条持久连接上双向发送数据，服务端也能主动推送消息。
+
+常见应用包括网页即时通讯、通知与实时数据推送。协议握手、事件与方法见 [WebSocket 基础](/docs/websocket-basics)。
