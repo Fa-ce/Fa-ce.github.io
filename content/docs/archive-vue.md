@@ -65,8 +65,6 @@ draft: true
 
 ##### hello vuejs
 
-​	<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="1584240930824" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1584240930824.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 ​	声明式编程
 
@@ -76,13 +74,9 @@ draft: true
 
 ##### vue列表展示
 
-​	<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="1584242435499" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1584242435499.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 ##### 案例：计数器
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="1584278039459" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1584278039459.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -219,13 +213,9 @@ beforeDestory： destoryed ：当前组件已被删除，清空相关内容
 
 ##### v-html:使字符串以html进行解析 <a></a>
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="1584363805489" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1584363805489.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 ##### v-text:使字符串以文本形式解析（因为mustanche更加灵活 所以在开发中我们基本不适用v-text）
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="1584363836798" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1584363836798.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 ##### v-cloak:当网络较慢，网页还在加载 Vue.js ，而导致 Vue 来不及渲染，这时页面就会显示出 Vue 源代码。
 
@@ -281,8 +271,6 @@ ES6的第一个版本，就这样在2015年6月发布了，正式名称就是《
 
 ES6新增语法功能
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200323082028470" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200323082028470.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 # 常用的ES6语法
 
@@ -294,8 +282,6 @@ js中使用var来声明一个变量时，变量的作用域主要是和函数的
 
 针对于其他块定义来说没有作用域的，比如if/for等，这些会导致开发中引发一些问题
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="1584849929523" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1584849929523.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -565,8 +551,6 @@ vue的条件指令可以根据表达式的值在DOM中渲染或销毁元素或�
 
 简单演示：
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200323190603343" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200323190603343.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -693,8 +677,6 @@ v-for="(value,key) in list"
 
 diff算法：
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200323224353874" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200323224353874.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 **key的作用主要是为了高效的更新虚拟DOM**
 
@@ -1025,11 +1007,7 @@ Vue.component('num1',{
 
 思考下列两个图示代码输出结果：
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="5210a06adc1b475cb0062f48f1d4766" | src=C:\Users\ADMINI~1\AppData\Local\Temp\WeChat Files\5210a06adc1b475cb0062f48f1d4766.jpg -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="d0dcc2d0dbeca31089d788c3c5aae77" | src=C:\Users\ADMINI~1\AppData\Local\Temp\WeChat Files\d0dcc2d0dbeca31089d788c3c5aae77.jpg -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -1067,8 +1045,6 @@ Vue.component('num1',{
 1通过props向子组件传递数据   父传子
 2通过事件emit向父组件发送消息   子传父
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200330085223782" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200330085223782.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -1290,8 +1266,6 @@ this.$refs.aaa
 
 组件通讯的图示：
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="9992e1cc9e06a51dc6ca13be01a10ae" | src=C:\Users\ADMINI~1\AppData\Local\Temp\WeChat Files\9992e1cc9e06a51dc6ca13be01a10ae.jpg -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -1305,8 +1279,6 @@ this.$refs.aaa
 
 例子：移动网站中的导航栏
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200330213627595" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200330213627595.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 思考：一个京东的移动端网站，顶部菜单可以做成一个组件么？
 
@@ -2809,8 +2781,6 @@ $route.query.id
 
 3按照4栏的话，创建4个.vue页面,点击后，路由切换到响应的页面中。
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="a50f2dfa247336c23328612b1f29358" | src=C:\Users\Administrator\Desktop\a50f2dfa247336c23328612b1f29358.jpg -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 
 
@@ -3070,11 +3040,7 @@ new Promise(()=>{
 
 # 单界面状态管理
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200825103151658" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200825103151658.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
-<!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="image-20200825103207078" | src=C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200825103207078.png -->
-> ⚠️ 此处原有本地截图，路径已失效，待补。
 
 State:就是我们的状态（你可以姑且当做是data中的属性）
 
