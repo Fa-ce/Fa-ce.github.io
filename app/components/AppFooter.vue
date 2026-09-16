@@ -13,10 +13,18 @@ const year = 2026
       <nav>
         <ul class="flex items-center gap-6">
           <li>
-            <NuxtLink to="/blog" class="u-underline cursor-pointer inline-flex min-h-11 items-center">博客</NuxtLink>
+            <NuxtLink
+              to="/blog"
+              class="u-underline cursor-pointer inline-flex min-h-11 items-center"
+              >博客</NuxtLink
+            >
           </li>
           <li>
-            <NuxtLink to="/docs" class="u-underline cursor-pointer inline-flex min-h-11 items-center">文档</NuxtLink>
+            <NuxtLink
+              to="/docs"
+              class="u-underline cursor-pointer inline-flex min-h-11 items-center"
+              >文档</NuxtLink
+            >
           </li>
           <li>
             <a
@@ -24,7 +32,8 @@ const year = 2026
               target="_blank"
               rel="noopener noreferrer"
               class="u-underline cursor-pointer inline-flex min-h-11 items-center"
-            >GitHub</a>
+              >GitHub</a
+            >
           </li>
         </ul>
       </nav>

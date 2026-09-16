@@ -12,14 +12,14 @@ tags: [wsl2, linux, windows, guide]
 
 ## 环境前置
 
-| 项目 | 版本/说明 |
-|------|----------|
-| 操作系统 | Windows 11 Pro 26200 |
-| WSL 版本 | 2.7.3.0（内核 6.6.114.1-1） |
-| WSL 发行版 | Ubuntu 24.04 |
-| 默认 Shell | Zsh + Oh My Zsh |
-| 代理方案 | Mihomo Party（Clash 系列）TUN 模式 |
-| 网络模式 | NAT |
+| 项目       | 版本/说明                          |
+| ---------- | ---------------------------------- |
+| 操作系统   | Windows 11 Pro 26200               |
+| WSL 版本   | 2.7.3.0（内核 6.6.114.1-1）        |
+| WSL 发行版 | Ubuntu 24.04                       |
+| 默认 Shell | Zsh + Oh My Zsh                    |
+| 代理方案   | Mihomo Party（Clash 系列）TUN 模式 |
+| 网络模式   | NAT                                |
 
 WSL 安装本身不在本文范围（一句话：`wsl --install -d Ubuntu-24.04`）。本文从「Ubuntu 已装好，第一次进系统」开始。
 
@@ -98,13 +98,13 @@ sudo apt install -y \
 
 各包用途：
 
-| 包 | 作用 |
-|----|------|
-| `build-essential` | gcc/g++/make，**几乎所有 native 模块编译都需要**（如 sqlite3、bcrypt、node-gyp） |
-| `git curl wget` | 必备 |
-| `vim` | 命令行编辑器 |
-| `zsh` | 我们要换的 shell |
-| `net-tools dnsutils` | `ifconfig`、`nslookup`、`dig` 等网络诊断工具 |
+| 包                   | 作用                                                                             |
+| -------------------- | -------------------------------------------------------------------------------- |
+| `build-essential`    | gcc/g++/make，**几乎所有 native 模块编译都需要**（如 sqlite3、bcrypt、node-gyp） |
+| `git curl wget`      | 必备                                                                             |
+| `vim`                | 命令行编辑器                                                                     |
+| `zsh`                | 我们要换的 shell                                                                 |
+| `net-tools dnsutils` | `ifconfig`、`nslookup`、`dig` 等网络诊断工具                                     |
 
 ---
 
@@ -119,6 +119,7 @@ sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install
 ```
 
 > 如果你开了 TUN 代理直连 GitHub 稳定，直接用官方脚本也行：
+>
 > ```bash
 > sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 > ```
@@ -226,6 +227,7 @@ git config --global pull.rebase false
 ```
 
 `core.autocrlf input` 解释：
+
 - WSL 是 Linux，提交时用 LF
 - Windows 上签出别人的代码会自动转 CRLF
 - `input` 模式：提交时 CRLF → LF，签出时不转换。**最适合跨平台团队**。
@@ -370,6 +372,7 @@ curl -o- https://gitee.com/mirrors/nvm/raw/master/install.sh | bash
 > 用 zsh 之前装：自动写入 `~/.zshrc`  
 > 用 zsh 之后装：也会自动写入 `~/.zshrc`  
 > **检查方法**：看 `~/.zshrc` 末尾有没有：
+>
 > ```bash
 > export NVM_DIR="$HOME/.nvm"
 > [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -398,12 +401,13 @@ nvm use default
 
 **关键认知**：nvm 下载源 ≠ npm registry。
 
-| 工具 | 下载位置 | 是否要改 |
-|------|---------|---------|
+| 工具    | 下载位置                  | 是否要改                |
+| ------- | ------------------------- | ----------------------- |
 | **nvm** | nodejs.org 下 node 二进制 | ✅ **要改**（国内极慢） |
-| **npm** | registry.npmjs.org 下包 | ❌ 不一定改 |
+| **npm** | registry.npmjs.org 下包   | ❌ 不一定改             |
 
 如果你开了 TUN 代理，**npm 直连 npmjs.org 就走代理了**，速度完全 OK，**不必改 registry**。改成淘宝镜像反而：
+
 - 套娃延迟（代理 → 阿里云镜像）
 - 私有包丢失（公司私库的包淘宝没同步）
 - 关代理后不一定更快
@@ -545,18 +549,18 @@ uv --version
 
 ### 6.2 常用命令速查
 
-| 用途 | 命令 |
-|------|------|
-| 装 Python 解释器 | `uv python install 3.12` |
-| 列出已装版本 | `uv python list` |
-| 创建项目 | `uv init myproject && cd myproject` |
-| 加依赖 | `uv add requests` |
-| 删依赖 | `uv remove requests` |
-| 运行脚本 | `uv run python xxx.py` |
-| 同步依赖 | `uv sync` |
-| 单文件脚本依赖 | `uv run --with requests script.py` |
-| 临时跑工具 | `uvx ruff check .`（类似 npx） |
-| 装独立 CLI 工具 | `uv tool install ruff` |
+| 用途             | 命令                                |
+| ---------------- | ----------------------------------- |
+| 装 Python 解释器 | `uv python install 3.12`            |
+| 列出已装版本     | `uv python list`                    |
+| 创建项目         | `uv init myproject && cd myproject` |
+| 加依赖           | `uv add requests`                   |
+| 删依赖           | `uv remove requests`                |
+| 运行脚本         | `uv run python xxx.py`              |
+| 同步依赖         | `uv sync`                           |
+| 单文件脚本依赖   | `uv run --with requests script.py`  |
+| 临时跑工具       | `uvx ruff check .`（类似 npx）      |
+| 装独立 CLI 工具  | `uv tool install ruff`              |
 
 ### 6.3 基础工作流
 
@@ -603,11 +607,11 @@ code .
 
 ### 7.3 文件位置铁律
 
-| 用途 | 路径 |
-|------|------|
-| WSL 访问 Windows 用户目录 | `/mnt/c/Users/<你的用户名>/` |
+| 用途                      | 路径                                                    |
+| ------------------------- | ------------------------------------------------------- |
+| WSL 访问 Windows 用户目录 | `/mnt/c/Users/<你的用户名>/`                            |
 | Windows 访问 WSL 文件系统 | 资源管理器输入 `\\wsl$\Ubuntu-24.04\home\<你的用户名>\` |
-| 项目存放位置 | **必须放 WSL 原生路径** `~/projects/` |
+| 项目存放位置              | **必须放 WSL 原生路径** `~/projects/`                   |
 
 **🚫 项目千万别放 `/mnt/c/` 或 `/mnt/f/`**：
 
@@ -621,19 +625,19 @@ code .
 
 ## 八、踩坑速查表
 
-| 现象 | 原因 | 修复 |
-|------|------|------|
-| WSL 内 ping IP 通但解析域名失败 | Clash TUN 拦了 DNS / 镜像模式问题 | NAT 模式 + Clash 排除内网网段不包含 WSL 网段 |
-| `Destination Host Unreachable` | ARP 失败（火绒「对外 ARP 攻击拦截」误伤 Hyper-V 网卡） | 关闭火绒「对外 ARP 攻击拦截」 |
-| `ssh: Connection closed by ... port 22` | ISP 干扰 GitHub 22 端口 | 用 `ssh.github.com:443` |
-| `npm ERR! EPIPE` | npm 8 + 私服 audit 流崩 | `.npmrc` 加 `audit=false` |
-| `ENOTEMPTY: directory not empty` | 上次 npm i 半成功 | 删 `node_modules` + `package-lock.json` + `npm cache clean --force` |
-| `nvm install` 卡住 | 下载 nodejs.org 超时 | `export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node` |
-| `No acceptable C compiler found` | 没装 build-essential | `sudo apt install build-essential` |
-| `compinit:527: no such file ...` | Docker Desktop 死链残留 | 删死链 + `rm ~/.zcompdump*` + `exec zsh` |
-| `rm: cannot remove ...: Is a directory` | 用 `rm` 删目录 | `rmdir`（空）或 `rm -r`（非空）|
-| PowerShell 脚本中文注释报错 | UTF-8 无 BOM 被按 GBK 解码 | 用记事本另存为 "UTF-8 with BOM" 或改用 PowerShell 7 (`pwsh`) |
-| `rm -rf` 误删 | 没有回收站，永久消失 | 装 `trash-cli`，用 `trash` 替代 |
+| 现象                                    | 原因                                                   | 修复                                                                |
+| --------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
+| WSL 内 ping IP 通但解析域名失败         | Clash TUN 拦了 DNS / 镜像模式问题                      | NAT 模式 + Clash 排除内网网段不包含 WSL 网段                        |
+| `Destination Host Unreachable`          | ARP 失败（火绒「对外 ARP 攻击拦截」误伤 Hyper-V 网卡） | 关闭火绒「对外 ARP 攻击拦截」                                       |
+| `ssh: Connection closed by ... port 22` | ISP 干扰 GitHub 22 端口                                | 用 `ssh.github.com:443`                                             |
+| `npm ERR! EPIPE`                        | npm 8 + 私服 audit 流崩                                | `.npmrc` 加 `audit=false`                                           |
+| `ENOTEMPTY: directory not empty`        | 上次 npm i 半成功                                      | 删 `node_modules` + `package-lock.json` + `npm cache clean --force` |
+| `nvm install` 卡住                      | 下载 nodejs.org 超时                                   | `export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node`   |
+| `No acceptable C compiler found`        | 没装 build-essential                                   | `sudo apt install build-essential`                                  |
+| `compinit:527: no such file ...`        | Docker Desktop 死链残留                                | 删死链 + `rm ~/.zcompdump*` + `exec zsh`                            |
+| `rm: cannot remove ...: Is a directory` | 用 `rm` 删目录                                         | `rmdir`（空）或 `rm -r`（非空）                                     |
+| PowerShell 脚本中文注释报错             | UTF-8 无 BOM 被按 GBK 解码                             | 用记事本另存为 "UTF-8 with BOM" 或改用 PowerShell 7 (`pwsh`)        |
+| `rm -rf` 误删                           | 没有回收站，永久消失                                   | 装 `trash-cli`，用 `trash` 替代                                     |
 
 ---
 

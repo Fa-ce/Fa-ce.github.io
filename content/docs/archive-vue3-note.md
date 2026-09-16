@@ -27,11 +27,11 @@ draft: true
 
 **2、源码的升级**
 
-* 使用 Proxy 代替 defineProperty 实现响应式
+- 使用 Proxy 代替 defineProperty 实现响应式
 
-* 重写虚拟 DOM 的实现和 Tree-Shaking (Tree-Shaking ： webpack支持)
+- 重写虚拟 DOM 的实现和 Tree-Shaking (Tree-Shaking ： webpack支持)
 
-* ……
+- ……
 
 **3、支持 Typescript**
 
@@ -42,35 +42,35 @@ draft: true
 **4、新的特性**
 
 1. Composition API (组合API)
-   
-   + setup配置
-   
-   + ref reactive
-   
-   + watch与watchEffect
-   
-   + provide与inject
-   
-   + ……
+
+   - setup配置
+
+   - ref reactive
+
+   - watch与watchEffect
+
+   - provide与inject
+
+   - ……
 
 2. 新的内置组件
-   
+
    - Fragment
-   
+
    - Teleport
-   
+
    - Suspense
-   
+
    - ……
 
 3. 其他改变
-   
+
    - 新的生命周期钩子
-   
+
    - data 选项应始终被声明为一个函数
-   
+
    - 移除keyCode支持作为 v-on 的修饰符
-   
+
    - ……
 
 # 壹、创建Vue3.0工程
@@ -80,24 +80,24 @@ draft: true
 ```v
 vue crete vue3_test
 
-启动：npm run 
+启动：npm run
 ```
 
 ## 2. 使用 vite 创建
 
-**官方文档 ：**  [快速上手 | Vue.js](https://cn.vuejs.org/guide/quick-start.html)        [https://cn.vitejs.dev/]()
+**官方文档 ：** [快速上手 | Vue.js](https://cn.vuejs.org/guide/quick-start.html)        [https://cn.vitejs.dev/](<>)
 
 **vite官网：** https://vitejs.cn
 
-+ **优势 ：**
-  
-  + 开发环境中，无需打包操作，可以快速冷启动
-  
-  + 轻量快速的热重载 (HMR)
-  
-  + 真正的按需编译，不再等待整个应用编译完成
+- **优势 ：**
 
-+ 传统创建与 vite 构建对比
+  - 开发环境中，无需打包操作，可以快速冷启动
+
+  - 轻量快速的热重载 (HMR)
+
+  - 真正的按需编译，不再等待整个应用编译完成
+
+- 传统创建与 vite 构建对比
 
 ![](assets/2022-11-28-17-09-46-image.png)
 
@@ -146,23 +146,23 @@ setTimeout(() => {
 3. 组件中所用到的：数据、方法等，均要配置在 setup 中
 
 4. setup 函数的两种返回值：
-   
+
    - 若返回一个对像，则对象中的属性、方法，在模板中均可以**直接使用**
-   
-   - *若返回一个渲染函数：则可以自定义渲染内容*
-   
+
+   - _若返回一个渲染函数：则可以自定义渲染内容_
+
    - <text style="color:red"> **!** `setup`中定义的数据一定要返回，不然页面无法获取到数据 **!** </text>
 
 5. 注意点：
-   
+
    1. 尽量不要与 Vue2.X 配置混用
-      
+
       - Vue2.x配置 (data、methods、computed……) 中**可以访问到**setup中属性、方法
-      
+
       - 但在setup中**不能访问**Vue2.x配置 （data、methods、computed……）
-      
+
       - 如果有重名，setup优先
-   
+
    2. setup 不能是一个 async 函数，因为返回值不再是return的对象，模版看不到return对象中的属性。**(后期也可以返回一个`Promise`实例，但需要`Suspense`和异步组件的配合)**
 
 ## 2、ref函数
@@ -170,30 +170,30 @@ setTimeout(() => {
 - 作用：定义一个响应式数据
 
 - 语法：`let XXX = ref(initValue)`
-  
+
   - 创建一个包含响应式数据的**引用对象(reference 对象，简称 ref 对象)**
-  
+
   - JS中操作数据：`XXX.value`
-  
+
   - 模版中读取数据：不需要value，直接`<div>{{XXX}}</div>`
 
 - 备注：
-  
+
   - 接收的数据可以是：基本类型，也可以是对象类型
-  
+
   - 基本类型数据：响应式依然是靠`Object.defineProperty()`的`get`与`set` 完成的
-  
+
   - 对象类型的数据：内部**求组**了Vue3中的新函数——`reactive`函数
 
 ## 3、reactive函数
 
 - 作用：定义一个**对象类型**的响应式数据 (基本类型使用`ref`函数)
-  
+
   - 语法：`(const 代理对象 = reactive(源对象)`接收一个对象(或数组)，返回一个**代理对象 (`proxy` 对象)**
-  
-  - `reactive`定义的响应式数据是 *深层次的*
-  
-  - 内部基于`ES6`的`proxy`实现，通过代理对象操作源对象内部数据进行操作 
+
+  - `reactive`定义的响应式数据是 _深层次的_
+
+  - 内部基于`ES6`的`proxy`实现，通过代理对象操作源对象内部数据进行操作
 
 ## 4、Vue3中的响应式原理
 
@@ -227,12 +227,12 @@ setTimeout(() => {
 - 通过`Reflect(反射)`：对被代理源对象的属性进行操作
 
 - MDN 文档中描述的`Proxy`与`Reflect`
-  
+
   - `Proxy`：[Proxy - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
   - `Reflect`： [Reflect - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
   - ```js
       const proxy = new Proxy(person, {
-        // 拦截读取属性值 读取 
+        // 拦截读取属性值 读取
         get(target, propName) {
           // console.log('有人读去了proxy属性', target, b)
           console.log(`有人读取了proxy的 ${propName} 属性`)
@@ -258,41 +258,41 @@ setTimeout(() => {
 ## 5、reactive 对比 ref
 
 - 从定义数据角度对比：
-  
+
   - `ref`用来定义：<text style='color: red'>基本数据类型</text>
-  
+
   - `reactive`用来定义：<text style='color: red'>对象 (或数组) 类型数据</text>
-  
+
   - 备注：`ref`也可以用来定义*对象(或数组)类型数据*，它内部会自动通过`reactive`转为**代理对象**
 
 - 从原理角度对比
-  
+
   - `ref`通过`Object.defineProperty()`的`get`和`set`来实现响应式(数据劫持)
-  
+
   - `reactive`通过`proxy`来实现响应式（数据劫持），并通过`Reflect`操作**源对象**内部数据
 
 - 从使用角度对比：
-  
+
   - `ref`定义的数据：操作数据需要`.value`，读取数据模板中可直接读取
-  
+
   - `reactive`定义的数据：操作数据与读取数据，均不需要`.value`
 
 ## 6、setup的两个注意点
 
 - `setup`执行的时机
-  
+
   - 在`beforeCreate`之前执行，`this`是**undefined**
 
 - `setup`的参数
-  
+
   - `props`：值为对象，包含：组件外包传递过来，且组件内部声明了的属性
-  
+
   - `context`：上下午对象
-    
+
     - `attrs`：值为对象，包含：组件外部传递过来，但没有在`props`配置中声明的属性，相当于`this.$attrs`
-    
+
     - `slots`：收到的插槽内容，相当于`this.$slots`
-    
+
     - `emit`：分发自定义事件的函数，相当于`this.$emit`
 
 ## 7、计算属性与监视
@@ -332,9 +332,9 @@ export default {
 - 与Vue2.x中的watch配置功能一致
 
 - 两个注意点：
-  
+
   - 监视`reactive`定义的响应式数据时：`oldValue`无法正确获取，强制开启了深度监视(`deep`配置失效)
-  
+
   - 监视`reactive`定义的响应式数据中某个属性时：deep配置有效
 
 ```js
@@ -403,9 +403,9 @@ setup() {
 - `watchEffect`：不用指明监视哪个属性，监视的回调中用到哪个属性，就监视哪个属性
 
 - watchEffect有点像computed：
-  
+
   - 但`computed`注重的计算出来的值(回调函数的返回值)，所以**必须写返回值**
-  
+
   - `watchEffect`更注重的是过程(回调函数的函数体)，所以**不用写返回值**
 
 ```javascript
@@ -426,27 +426,27 @@ setup() {
 生命周期图片地址： /images/remote/436c302b1139ccf9.png
 
 - Vue3 中可以继续使用 Vue2.x 中的生命周期钩子，但有两个被更名：
-  
+
   - `beforeDestroy`改名为`beforeUnmount`
-  
+
   - `destroyed`改名为`unmounted`
 
 - Vue3 也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下：
-  
+
   - `beforeCreate` ======> `setup()`
-  
+
   - `created` ===========> `setup()`
-  
+
   - `beforeMount` =======> `onBeforMount`
-  
+
   - `mounted` ===========> `onMounted`
-  
+
   - `beforeUpdate` ======> `onBeforUpdate`
-  
+
   - `update` ============> `onUpdate`
-  
+
   - `beforeUnmont` ======> `onBeforeUnmount`
-  
+
   - `unmonted` ==========> `onUnmounted`
 
 ## 9、自定义hook函数
@@ -476,9 +476,9 @@ setup() {
 - `shallowRef`：只处理基本数据类型的响应式，不进行对象的响应式处理
 
 - 什么时候使用：
-  
+
   - 如果有一个对象数据，结构比较深，但变化时只是外层属性变化 ===> `shallowReactive`
-  
+
   - 如果有一个对象数据，后续功能不会修改该对象中的属性，而是生成新的对象来替换 ===> `shallowRef`
 
 ## 2、 readonly与 shallowReadonly
@@ -492,19 +492,19 @@ setup() {
 ## 3、toRaw 与 markRaw
 
 - toRaw：
-  
+
   - 作用：将一个由`reactive`生成的**响应式对象**转为**普通对象**
-  
+
   - 使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，不会引起页面更新
 
 - markRaw：
-  
+
   - 作用：标记一个对象，使其永远不会称为响应式对象
-  
+
   - 应用场景：
-    
+
     1. 有些值不应该被设置为响应式的，例如复杂的第三方类库等
-    
+
     2. 当渲染具有不可改变数据源的大列表时，跳过响应式转换可以提高性能
 
 ## 4、customRef
@@ -512,13 +512,13 @@ setup() {
 - 作用：创建一个自定义的`ref`，并对其依赖项跟踪和更新触发进行显式控制
 
 - 实现防抖效果：
-  
+
   ```js
   <template>
     <input type="text" v-model="keyWord">
     <h3>{{ keyWord }}</h3>
   </template>
-  
+
   <script>
   import { clear } from "console";
   import { ref, customRef } from "vue";
@@ -550,10 +550,10 @@ setup() {
           }
         })
       }
-  
+
       // let keyWord = ref("hello") // 使用Vue提供的 ref
       let keyWord = myRef("hello") // 使用程序员自定义的 ref
-  
+
       return {
         keyWord,
       };
@@ -569,29 +569,29 @@ setup() {
 - 套路：父组件有一个`provide`选项来提供数据，子组件有一个`inject`选项来开始使用这些数据
 
 - 具体写法
-  
+
   1. 祖组件中：
-     
+
      ```js
        import { provide } from 'vue'
        setup() {
          const car = reactive({ name: 'Car', price: '40W' })
          provide('car', car) // 给自己的后代组件传递数据
-     
+
          return {
            ...toRefs(car)
          }
        }
      ```
-  
+
   2. 孙组件中：
-     
+
      ```js
      import { inject } from 'vue'
      setup() {
          const car = inject('car') // inject 接收
          console.log('打印car', car)
-     
+
          return {
            car
          }
@@ -631,7 +631,7 @@ setup() {
 ## 2、Telport
 
 - 什么是`Telport`？ —— `Telport`是一种能够将我们的<span style="color:red">组件HTML结构</span>移动到指定位置的技术
-  
+
   ```html
     <teleport to='body'>
       <!-- <teleport to='#atgui'> 展示在atgui标签 -->
@@ -654,17 +654,17 @@ setup() {
 - 等待异步组件时渲染一些后备内容，获得更好的用户体验
 
 - 使用步骤：
-  
+
   - 异步引入组件
-    
+
     ```js
     import { defineAsyncComponent } from 'vue'
     // import Child from './components/Child.vue' // 静态引入
     const Child = defineAsyncComponent(() => import('./components/Child.vue')) // 异步引入
     ```
-  
+
   - 使用`Suspense`包裹组件，并配置好`default`和`fallback`
-    
+
     ```html
     <template>
       <div class="app">
@@ -686,9 +686,9 @@ setup() {
 ## 1、全局API的转移
 
 - Vue2 有许多全局 API 和配置
-  
+
   - 例如：注册全局组件、注册全局指令等
-    
+
     ```js
     // 注册全局组件
     Vue.component('MyButton', {
@@ -704,28 +704,28 @@ setup() {
     ```
 
 - Vue3中对这些API做出了调整
-  
+
   - 将全局的 API，即：`Vue.xxx`调整到应用实例 (`app`) 上
-  
-  | -- 2.x全局 API (Vue) --    | -- 3.x实例 API (app) --              |
-  | ------------------------ | ---------------------------------- |
-  | Vue.config.xxx           | app.config.xxx                     |
-  | Vue.config.productionTip | 移除 (生产版本提示)                        |
-  | Vue.component            | app.component                      |
-  | Vue.directive            | app.directive                      |
-  | Vue.mixin                | app.mixin                          |
-  | Vue.use                  | app.use                            |
+
+  | -- 2.x全局 API (Vue) --  | -- 3.x实例 API (app) --                |
+  | ------------------------ | -------------------------------------- |
+  | Vue.config.xxx           | app.config.xxx                         |
+  | Vue.config.productionTip | 移除 (生产版本提示)                    |
+  | Vue.component            | app.component                          |
+  | Vue.directive            | app.directive                          |
+  | Vue.mixin                | app.mixin                              |
+  | Vue.use                  | app.use                                |
   | Vue.prototype            | app.config.globalProperties (全局属性) |
-  |                          |                                    |
+  |                          |                                        |
 
 ## 2、其他改变
 
 - data 选项应始终被声明为一个函数
 
 - 过度类名的更改
-  
+
   - Vue2写法
-    
+
     ```css
     .v-enter，
     .v-leave-to{
@@ -736,9 +736,9 @@ setup() {
         opacity:1
     }
     ```
-  
+
   - Vue3写法
-    
+
     ```css
     .v-enter-from,
     .v-leave-to{
@@ -749,14 +749,14 @@ setup() {
         opacity:1
     }
     ```
-  
+
   - <span style="color:red">移除</span>`keyCode`作为`v-on`的修饰符，同时也不再支持`config.keyCodes`
-  
+
   - <span style="color:red">移除</span>`v-on.native`修饰符
-    
+
     - 父组件中绑定事件
     - ```v
-      <my-component 
+      <my-component
           v-on:close="handleComponentEvent"
           v-on:click="handleNativeClickEvent"
       />
@@ -769,7 +769,7 @@ setup() {
          }
        </script>
       ```
-    - <text style="color:red">移除</text>过滤器 (filter)  (可以用方法调用或者计算属性去替换过滤器)
+    - <text style="color:red">移除</text>过滤器 (filter) (可以用方法调用或者计算属性去替换过滤器)
     - ……
 
 # 报错
@@ -778,12 +778,12 @@ setup() {
 
 2. **Vue报错：** `Can't resolve XXX`  vue配置路由如果出现can not resolve“@src/test/demo”,那极有可能是路径写错了，或者路径和上面的写重复了，检查路径   也可能引入了模块路径不对……
 
-3. WebSocketClient.js?5586:16 WebSocket connection to  链接报错
-   
+3. WebSocketClient.js?5586:16 WebSocket connection to 链接报错
+
    ```js
    // 修改 vue.config.js 文件中的 devServer配置，主要是 client 配置项
    // webSocketURL和端口号设置一致
-   
+
    const { defineConfig } = require('@vue/cli-service')
    module.exports = defineConfig({
      devServer: {
@@ -802,7 +802,7 @@ setup() {
    ```
 
 4. **Vue3中console报错**： 修改package.json中的`eslintConfig:{}`中的`“rules:{}”`,增加一行代码："no-console":"off"
-   
+
    ```json
     "eslintConfig": {
       "rules": {
@@ -811,7 +811,7 @@ setup() {
     },
    ```
 
-5. 
+5.
 
 # vite
 
@@ -829,7 +829,7 @@ setup() {
 
 6. Vue实现一个message API：先写好一个render函数，将某一 HTML 片段挂载到 #root 下 / 从 #root 删除该片段。然后写一个Vue插件，就是一个暴露了包含 install 方法的模块，最后使用 Vue.use 全局注册这个插件即可
 
-7. `SSR`：服务端渲染：是在服务器端渲染网页内容，并且将渲染后的HTML 发送给浏览器，而不是在浏览器进行渲染。更快的首屏加载速度，提高用户体验。  缺点：增加服务器的负载、更高的开发复杂度。
+7. `SSR`：服务端渲染：是在服务器端渲染网页内容，并且将渲染后的HTML 发送给浏览器，而不是在浏览器进行渲染。更快的首屏加载速度，提高用户体验。 缺点：增加服务器的负载、更高的开发复杂度。
 
 8. 使用 SSR 在 `created \ componentWillMount`中，代码仍在服务器中执行，没有浏览器环境，还未挂载，此时不能访问`localStorage`
 
@@ -842,23 +842,23 @@ setup() {
 12. 框架优势：一套代码可以维护 Android、iOS两个平台，减少开发成本；相同功能可以使用组件复用；两个平台可以同时更新，原生代码更新时需要审核
 
 13. `router`的实现原理：前端路由本质是监听URL变化，Hash模式和History模式，无需刷新就能加载响应的页面。`Hash`模式当 # 后面的哈希值发生变化时，通过`hashchange`事件监听，然后页面跳转；`History`模式通过：`history.pushState`和`history.replaceState`改变 URL。
-    
+
     Vue3引入路由模式：
-    
+
     ```js
     // history模式，需要后台配置做重定向，否则会出现404的
     import { createWebHistory } from 'vue-router'
     // hash模式
     import { createWebHashHistory } from 'vue-router'
-    
+
     const router = createRouter({
       history: createWebHistory(process.env.BASE_URL),
       routes
     })
     ```
-    
-     两种模式的区别：
-    
+
+    两种模式的区别：
+
     - hash 只能改变 # 后的值，而 history 模式可以随意设置同源 URL
-    
+
     - hash模式原理：a标签的锚点链接

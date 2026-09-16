@@ -24,7 +24,7 @@ draft: true
                 <div style="float: right;width: 50px;height: 18px;position: relative;background: rgba(255, 165, 0, 0.5);" class="">... 更多</div>
             </div>
         </div>
-    </div>   
+    </div>
     <h2>我也会</h2>
     <style>
         .container {

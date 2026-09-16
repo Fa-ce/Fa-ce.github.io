@@ -85,11 +85,11 @@ try {
 
 ## 全局对象与 this
 
-| 环境 | 顶层绑定与 this |
-| --- | --- |
-| 浏览器经典 `<script>` | 顶层 `var`、函数声明通常关联 `window` 属性；`let`、`const`、`class` 不会以此方式创建属性 |
-| 浏览器或 Node 的 ES Module | 顶层声明属于模块作用域，顶层 `this` 是 `undefined` |
-| Node CommonJS 模块 | 顶层变量属于模块；顶层 `this` 初始为 `module.exports` |
+| 环境                       | 顶层绑定与 this                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------- |
+| 浏览器经典 `<script>`      | 顶层 `var`、函数声明通常关联 `window` 属性；`let`、`const`、`class` 不会以此方式创建属性 |
+| 浏览器或 Node 的 ES Module | 顶层声明属于模块作用域，顶层 `this` 是 `undefined`                                       |
+| Node CommonJS 模块         | 顶层变量属于模块；顶层 `this` 初始为 `module.exports`                                    |
 
 `globalThis` 提供跨环境访问全局对象的名称，属于 ES2020。普通函数直接调用时，非严格模式的 `this` 通常为全局对象，严格模式为 `undefined`；对象方法调用、显式绑定和箭头函数另有规则，见 [函数与类](/docs/es6-functions-classes)。
 

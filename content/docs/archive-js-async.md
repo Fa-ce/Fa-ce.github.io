@@ -9,8 +9,6 @@ draft: true
 
 # 异步
 
-
-
 ### Generator
 
 generator是**异步任务的容器**（**交出函数的执行权**（即暂停执行）），需要用.next()方法启动。可以分阶段运行。
@@ -32,15 +30,13 @@ yield可以用来加强控制（懒汉式加载 调用函数指针和调用生�
             yield _v;
         }
         var a = fn();
-        console.log(a.next()); //{value: 24, done: false} 
+        console.log(a.next()); //{value: 24, done: false}
         console.log(a.next()); //第二个next后执行 {value: undefined, done: false}
 
 		var b = fn();
-        console.log(b.next()); //{value: 24, done: false} 
+        console.log(b.next()); //{value: 24, done: false}
         console.log(b.next('abc')); //第二个next后执行 {value: 'abc', done: false}
 ```
-
-
 
 ### promise
 
@@ -85,17 +81,13 @@ console.log(promise2.then(res => console.log(res)))
 // 4
 ```
 
-
-
 ### Promise A+规范
-
-
 
 - promise应该有三个状态：
 
-  + pending（初始状态可变）、
-  + fulfilled（最终态不可变、一个promise被resolve后变成该状态、必须拥有一个value值）、
-  + rejected（最终态不可变、一个promise被reject后变成该状态（不是throw Error：直接报错）、必须拥有reason值）
+  - pending（初始状态可变）、
+  - fulfilled（最终态不可变、一个promise被resolve后变成该状态、必须拥有一个value值）、
+  - rejected（最终态不可变、一个promise被reject后变成该状态（不是throw Error：直接报错）、必须拥有reason值）
 
 - promise应该有个then方法，用来访问最终结果（value or reason）
 
@@ -103,11 +95,9 @@ console.log(promise2.then(res => console.log(res)))
   Promise.then(onFulfilled, onRejected) // 参数若不是函数则被忽略
   ```
 
-  
-
 - onFulfilled和onRejected应该是微任务
 
-+ 在执行上下文堆栈仅包含平台代码之前，不得调onFulfilled 或 onRejected函数，onFulfilled 和 onRejected 必须被作为普通函数调用（即非实例化调用，这样函数内部 this 非严格模式下指向 window），使用queueMicrotask或者setTimeout来实现微任务的调用
+* 在执行上下文堆栈仅包含平台代码之前，不得调onFulfilled 或 onRejected函数，onFulfilled 和 onRejected 必须被作为普通函数调用（即非实例化调用，这样函数内部 this 非严格模式下指向 window），使用queueMicrotask或者setTimeout来实现微任务的调用
 
 - then可被调用多次
 - then返回一个promise对象
@@ -123,7 +113,7 @@ console.log(promise2.then(res => console.log(res)))
         // 若两参数是函数，当函数返回的是一个新的promise对象时
         //原promise 跟新promise 状态保持一致
         // 如果返回的promise 是个pending 状态 将保留直到转换为fulfilled / rejected
-        //    
+        //
 
         // promise中断请求  不就是在then的时候将返回值新promise保持状态为pending
         // 那么这个promise 的链也将会中止（等待）
@@ -137,14 +127,6 @@ Promise.resolve().then(()=>{
     console.log(2)
 })
 ```
-
-
-
-
-
-
-
-
 
 ### async/await
 
@@ -162,8 +144,6 @@ async function fn() { // [AsyncFunction: fn]
 }
 console.log(fn()) // Promise{ '123' }
 ```
-
-
 
 ### Promise回调地狱
 
@@ -223,8 +203,6 @@ asyncAutomation(getData)
 //iceweb.com iceweb.org iceweb.io
 ```
 
-
-
 **async，await解决**
 
 ```js
@@ -237,10 +215,6 @@ async function fn() {
 
 fn()
 ```
-
-
-
-
 
 ### 总结
 
@@ -260,8 +234,6 @@ Promise有三种状态，分别是pending（等待），fulfilled（成功）和
 - 当执行了`reject`函数，会回调promise对象的.catch函数
 
 then、catch方法的作用是为Promise对象添加状态改变时的回调函数（放入微队列中等待执行），因为这些方法返回的也是Promise实例，所以可以链式调用
-
-
 
 ##### Promise的catch和then
 
@@ -291,6 +263,3 @@ promise.then(res => {
 
 //用catch写法更优，可以捕获前面then方法执行中的错误，也更接近同步的写法（try/catch）。
 ```
-
-
-

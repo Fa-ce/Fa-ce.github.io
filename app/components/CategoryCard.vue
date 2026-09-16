@@ -22,10 +22,7 @@ defineProps<Props>()
       <h2 class="cat-name u-h3 transition-colors duration-200">
         {{ name }}
       </h2>
-      <span
-        v-if="count !== undefined"
-        class="shrink-0 u-meta"
-      >
+      <span v-if="count !== undefined" class="shrink-0 u-meta">
         {{ count > 0 ? `${count} 篇` : '暂无文章' }}
       </span>
     </div>

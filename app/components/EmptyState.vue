@@ -14,11 +14,7 @@ withDefaults(defineProps<Props>(), { icon: 'inbox', size: 'default' })
 </script>
 
 <template>
-  <div
-    class="text-center"
-    :class="size === 'compact' ? 'py-6' : 'py-20'"
-    role="status"
-  >
+  <div class="text-center" :class="size === 'compact' ? 'py-6' : 'py-20'" role="status">
     <svg
       v-if="icon === 'search'"
       xmlns="http://www.w3.org/2000/svg"
@@ -53,17 +49,15 @@ withDefaults(defineProps<Props>(), { icon: 'inbox', size: 'default' })
       aria-hidden="true"
     >
       <path d="M22 12h-6l-2 3h-4l-2-3H2" />
-      <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+      <path
+        d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+      />
     </svg>
 
     <p :class="size === 'compact' ? 'text-xs u-mono' : 'text-base font-medium'">
       {{ title }}
     </p>
-    <p
-      v-if="description && size !== 'compact'"
-      class="mt-2 text-sm"
-      style="color: var(--fg-muted)"
-    >
+    <p v-if="description && size !== 'compact'" class="mt-2 text-sm" style="color: var(--fg-muted)">
       {{ description }}
     </p>
 

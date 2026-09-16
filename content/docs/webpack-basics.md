@@ -15,13 +15,13 @@ source: 尚学堂 ES6 课程 004_es6、006_webpack、007_webpack 学习笔记与
 
 Webpack 从入口建立模块依赖图，按配置转换和输出资源；开发服务器可以提供静态资源、监听与重新编译。
 
-| 工具 | 本课程中的定位 |
-| --- | --- |
-| npm scripts | 用命令串联工具 |
-| Gulp | 显式配置文件处理任务和流 |
-| Webpack | 根据模块依赖组织构建 |
-| Rollup | 另一种模块打包工具，常见于库构建 |
-| FIS3 | 课程提到的历史工具名称，本目录没有相关实现 |
+| 工具        | 本课程中的定位                             |
+| ----------- | ------------------------------------------ |
+| npm scripts | 用命令串联工具                             |
+| Gulp        | 显式配置文件处理任务和流                   |
+| Webpack     | 根据模块依赖组织构建                       |
+| Rollup      | 另一种模块打包工具，常见于库构建           |
+| FIS3        | 课程提到的历史工具名称，本目录没有相关实现 |
 
 工具各有场景，原文“某工具只适合上线前”“某工具只能打包 JS”过于绝对。Webpack 可解析 JavaScript 和 JSON，其他资源可经 loader 接入。
 
@@ -53,11 +53,11 @@ module.exports = {
 
 ### 单入口与多入口
 
-| entry 写法 | 说明 |
-| --- | --- |
-| `'./src/main.js'` | 单个入口模块 |
-| `['./src/a.js', './src/main.js']` | 同一入口中包含多个模块 |
-| `{ app: './src/app.js', main: './src/main.js' }` | 多个命名入口 |
+| entry 写法                                       | 说明                   |
+| ------------------------------------------------ | ---------------------- |
+| `'./src/main.js'`                                | 单个入口模块           |
+| `['./src/a.js', './src/main.js']`                | 同一入口中包含多个模块 |
+| `{ app: './src/app.js', main: './src/main.js' }` | 多个命名入口           |
 
 多入口应使用区分名称的输出，如 `filename: '[name]_[chunkhash:8].js'`。实际输出还可能包括异步 chunk、资源等，不能把“单入口”理解为永远只有一个文件。
 
@@ -129,12 +129,12 @@ file-loader 导入值用于浏览器访问资源，部署子路径时由 `output
 
 `devtool` 决定 source map 生成方式，影响构建速度、调试映射质量和产物大小。
 
-| 课程配置 | 调试信息 |
-| --- | --- |
-| `eval` | 便于定位生成后的模块代码 |
-| `cheap-eval-source-map` | 行级映射，通常不追溯 loader 原始源码 |
-| `cheap-module-eval-source-map` | 行级映射并利用 loader 的映射信息 |
-| `source-map` | 单独输出较完整的 source map 文件 |
+| 课程配置                       | 调试信息                             |
+| ------------------------------ | ------------------------------------ |
+| `eval`                         | 便于定位生成后的模块代码             |
+| `cheap-eval-source-map`        | 行级映射，通常不追溯 loader 原始源码 |
+| `cheap-module-eval-source-map` | 行级映射并利用 loader 的映射信息     |
+| `source-map`                   | 单独输出较完整的 source map 文件     |
 
 以上拼写按 Webpack 4。生成代码、转换后的代码和原始代码不是同一层级，映射到原始代码还需要 loader 提供相应信息。
 
@@ -171,11 +171,11 @@ const devServer = {
 
 请求关系：
 
-| 浏览器请求 | 开发服务器处理 |
-| --- | --- |
-| `http://localhost:4000/user` | 由 before 注册的模拟接口响应 |
-| `http://localhost:4000/owner/getdata` | 去掉前缀后代理至 `http://localhost:5000/getdata` |
-| `http://localhost:5000/getdata` | 绕过代理直接访问另一来源，需要后端满足浏览器跨源要求 |
+| 浏览器请求                            | 开发服务器处理                                       |
+| ------------------------------------- | ---------------------------------------------------- |
+| `http://localhost:4000/user`          | 由 before 注册的模拟接口响应                         |
+| `http://localhost:4000/owner/getdata` | 去掉前缀后代理至 `http://localhost:5000/getdata`     |
+| `http://localhost:5000/getdata`       | 绕过代理直接访问另一来源，需要后端满足浏览器跨源要求 |
 
 `changeOrigin` 改写发送给目标服务的 Host 信息，不是“关闭浏览器同源策略”。`pathRewrite` 使用开头锚点，仅移除前缀。[Webpack 4 开发服务器文档](https://v4.webpack.js.org/configuration/dev-server/)。
 

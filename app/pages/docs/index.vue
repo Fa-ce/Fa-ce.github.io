@@ -15,7 +15,12 @@ const { data: docs } = await useAsyncData('docs-all', () =>
 
 useHead({
   title: '文档 · Fa·ce',
-  meta: [{ name: 'description', content: '按主题分章的技术文档合集：可视化、规范、原理、工具链与面试题。' }]
+  meta: [
+    {
+      name: 'description',
+      content: '按主题分章的技术文档合集：可视化、规范、原理、工具链与面试题。'
+    }
+  ]
 })
 
 const allDocs = computed(() => docs.value ?? [])
@@ -133,12 +138,7 @@ const firstDoc = computed(() => groups.value[0]?.items[0])
     </template>
 
     <!-- 空状态 -->
-    <EmptyState
-      v-else
-      title="暂无文档"
-      description="内容正在整理中，先去看看博客吧"
-      icon="inbox"
-    >
+    <EmptyState v-else title="暂无文档" description="内容正在整理中，先去看看博客吧" icon="inbox">
       <template #action>
         <NuxtLink
           to="/blog"

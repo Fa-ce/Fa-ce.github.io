@@ -42,7 +42,7 @@ const groupedData = computed(() => {
 
   // 收集所有有效的条目（必须有 date）
   if (blogPosts.value) {
-    blogPosts.value.forEach((p) => {
+    blogPosts.value.forEach(p => {
       if (p.date) {
         items.push({
           path: p.path,
@@ -56,7 +56,7 @@ const groupedData = computed(() => {
   }
 
   if (docPosts.value) {
-    docPosts.value.forEach((p) => {
+    docPosts.value.forEach(p => {
       if (p.date) {
         items.push({
           path: p.path,
@@ -74,7 +74,7 @@ const groupedData = computed(() => {
 
   // 按年月分组
   const yearMap = new Map<string, Map<string, ArchiveItem[]>>()
-  items.forEach((item) => {
+  items.forEach(item => {
     const [year, month] = (item.date || '').split('-')
     if (!year || !month) return
 
@@ -93,13 +93,13 @@ const groupedData = computed(() => {
   Array.from(yearMap.keys())
     .sort()
     .reverse()
-    .forEach((year) => {
+    .forEach(year => {
       const monthMap = yearMap.get(year)!
       const months: MonthGroup[] = []
       Array.from(monthMap.keys())
         .sort()
         .reverse()
-        .forEach((month) => {
+        .forEach(month => {
           months.push({
             month,
             items: monthMap.get(month)!
@@ -132,7 +132,10 @@ const groupedData = computed(() => {
 
           <!-- 按月份循环 -->
           <div class="mt-8 space-y-10 pl-0 sm:pl-8">
-            <div v-for="monthGroup in yearGroup.months" :key="`${yearGroup.year}-${monthGroup.month}`">
+            <div
+              v-for="monthGroup in yearGroup.months"
+              :key="`${yearGroup.year}-${monthGroup.month}`"
+            >
               <!-- 月份副标题（栏目标记） -->
               <h3 class="u-kicker mb-4 pb-3" style="border-bottom: 1px solid var(--border)">
                 {{ Number(monthGroup.month) }}月
@@ -146,9 +149,7 @@ const groupedData = computed(() => {
                   class="archive-row grid grid-cols-[3rem_minmax(0,1fr)] sm:grid-cols-[4rem_minmax(0,1fr)_auto] gap-x-4 sm:gap-x-6 -mx-3 px-3 rounded-md"
                 >
                   <!-- 条目日期 -->
-                  <div class="u-meta flex items-center">
-                    {{ item.date?.split('-')[2] }}日
-                  </div>
+                  <div class="u-meta flex items-center">{{ item.date?.split('-')[2] }}日</div>
 
                   <!-- 条目标题（外层 div 保证链接宽度贴合文字，下划线不横贯整列） -->
                   <div class="min-w-0">
@@ -162,7 +163,9 @@ const groupedData = computed(() => {
                   </div>
 
                   <!-- byline：分类 · 来源 -->
-                  <div class="u-meta col-start-2 sm:col-start-3 flex items-center gap-1.5 pb-2 sm:pb-0">
+                  <div
+                    class="u-meta col-start-2 sm:col-start-3 flex items-center gap-1.5 pb-2 sm:pb-0"
+                  >
                     <span v-if="item.category" style="color: var(--accent-text)">
                       {{ categoryName(item.category) }}
                     </span>

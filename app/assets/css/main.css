@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
 /* v4 自动源检测未覆盖 Nuxt 4 的 app/ 结构，显式声明扫描范围 */
@@ -10,15 +10,15 @@
   已转 woff2：283KB -> 101KB。font-display:swap 避免首屏文字不可见。
 */
 @font-face {
-  font-family: "Fira Code";
-  src: url("../fonts/FiraCode-Regular.woff2") format("woff2");
+  font-family: 'Fira Code';
+  src: url('../fonts/FiraCode-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Fira Code";
-  src: url("../fonts/FiraCode-SemiBold.woff2") format("woff2");
+  font-family: 'Fira Code';
+  src: url('../fonts/FiraCode-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -59,10 +59,10 @@
     若将来要加 Editorial 的 serif 标题，建议只加载西文 serif（约 50KB），
     中文继续回落到系统黑体。
   */
-  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC",
-    "Microsoft YaHei", "Noto Sans SC", sans-serif;
-  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo,
-    Consolas, monospace;
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC',
+    sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --measure: 68ch;
   --header-h: 4rem;

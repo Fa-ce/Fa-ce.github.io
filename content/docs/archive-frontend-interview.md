@@ -22,14 +22,14 @@ calc() 函数用于动态计算长度值。 calc()函数支持 "+", "-", "*", "/
 
 > 这题考查的是css的基础知识是否全面，所以平时一定要注意多积累
 
-*水平居中*
+_水平居中_
 
 - 行内元素: `text-align: center`
 - 块级元素: `margin: 0 auto`
 - position:absolute +left:50%+ transform:translateX(-50%)
 - `display:flex + justify-content: center`
 
-*垂直居中*
+_垂直居中_
 
 - 设置line-height 等于height
 - position：absolute +top:50%+ transform:translateY(-50%)
@@ -112,9 +112,9 @@ box-sizing的默认属性是content-box
 - 创建父级 `BFC`(overflow:hidden)
 - 父级设置高度
 
-> *BFC （*块级格式化上下文*）*，是一个独立的渲染区域，让处于 `BFC` 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
+> _BFC （*块级格式化上下文*）_，是一个独立的渲染区域，让处于 `BFC` 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
 
-*触发条件:*
+_触发条件:_
 
 - 根元素
 - `position: absolute/fixed`
@@ -122,7 +122,7 @@ box-sizing的默认属性是content-box
 - `float` 元素
 - `ovevflow !== visible`
 
-*规则:*
+_规则:_
 
 - 属于同一个 `BFC` 的两个相邻 `Box` 垂直排列
 - 属于同一个 `BFC` 的两个相邻 `Box` 的 `margin` 会发生重叠
@@ -162,7 +162,7 @@ function add(num1,num2){
 	  return add(num,num2+1)
         }
  }
-var sum =add(1,2);                 
+var sum =add(1,2);
 ```
 
 ## 页面渲染html的过程？
@@ -301,7 +301,7 @@ var arr=['12','32','89','12','12','78','12','32'];
     function unique3(array){
         var n = [array[0]]; //结果数组
         for(var i = 1; i < array.length; i++) { //从第二项开始遍历
-            if (array.indexOf(array[i]) == i) 
+            if (array.indexOf(array[i]) == i)
                 n.push(array[i]);
         }
         return n;
@@ -383,8 +383,6 @@ function dedupe(array) {
 
 501：请求还没有被实现。
 
-
-
 ## 原型链的解释
 
 饿了么面试的时候问到了，用友也问到了。没答好，GG.
@@ -411,19 +409,11 @@ http://10.0.0.1/#/concat
 
 **前端路由**：每跳转到不同的URL都是使用前端的锚点路由，实际上只是JS根据URL来操作DOM元素，根据每个页面需要的去服务端请求数据，返回数据后和模板进行组合，当然模板有可能是请求服务端返回的，这就是 SPA 单页程序。
 
-
-
 ### 什么是SPA
-
-
 
 ### 介绍下WebPakc
 
-
-
 ### Promise
-
-
 
 ## 解释一下call函数和apply函数的作用，以及用法
 
@@ -434,11 +424,7 @@ this的指向问题，在你不知道的js这本书中（神书）做了四点�
 3.显示绑定（利用call、apply、bind改变this）
 4.new（var cat = new Animal() , this指向cat对象）
 
-
-
-
-
-### 
+###
 
 # 前端面试题300道
 
@@ -544,7 +530,7 @@ localHandler({"result":"我是远程js带来的数据"});
     var script = document.createElement('script');
     script.setAttribute('src', url);
     // 把script标签加入head，此时调用开始
-    document.getElementsByTagName('head')[0].appendChild(script); 
+    document.getElementsByTagName('head')[0].appendChild(script);
     </script>
 </head>
 <body>
@@ -582,7 +568,7 @@ flightHandler({
      <title>Untitled Page</title>
       <script type="text/javascript" src=jquery.min.js"></script>
       <script type="text/javascript">
-     jQuery(document).ready(function(){ 
+     jQuery(document).ready(function(){
         $.ajax({
              type: "get",
              async: false,
@@ -651,7 +637,7 @@ public class MyLinkedList {
 		return p2;
 	}
 	public static void main(String[] args) {
-		
+
 		MyLinkedList list=new MyLinkedList();
 		list.addNode(1);
 		list.addNode(2);
@@ -661,7 +647,7 @@ public class MyLinkedList {
 		MyLinkedList p=new MyLinkedList();
 		p.head=list.findElem(list.head, 3);
 		p.printList();
-		
+
 	}
 
 }
@@ -723,25 +709,25 @@ Hello World! My payload includes a trailing CRLF.
 匿名自执行函数、缓存、实现封装（主要作用）、实现面向对象中的对象
 
 ```php
-var person = function(){    
-    //变量作用域为函数内部，外部无法访问    
-    var name = "default";       
-    return {    
-       getName : function(){    
-           return name;    
-       },    
-       setName : function(newName){    
-           name = newName;    
-       }    
-    }    
-}();    
-print(person.name);//直接访问，结果为undefined    
-print(person.getName());    
-person.setName("a");    
-print(person.getName());    
-//得到结果如下：  
-undefined  
-default  
+var person = function(){
+    //变量作用域为函数内部，外部无法访问
+    var name = "default";
+    return {
+       getName : function(){
+           return name;
+       },
+       setName : function(newName){
+           name = newName;
+       }
+    }
+}();
+print(person.name);//直接访问，结果为undefined
+print(person.getName());
+person.setName("a");
+print(person.getName());
+//得到结果如下：
+undefined
+default
 a
 1234567891011121314151617181920
 ```
@@ -823,9 +809,9 @@ OSI：物理层-数据链路层-网络层-传输层-会话层-表现层-应用�
 
 ```php
 	attr(key,value)
-	
+
 	<img id="myphoto" alt="my photo" src=""/>
-	
+
 	$("#myphoto").attr("src","/pic/1.jpg");
 12345
 ```
@@ -837,20 +823,20 @@ jQuery对象是一个特殊的集合对象。即使只有一个元素，jQuery�
 ```php
  function fact(num) {
 	if (num <= 1) {
-		return 1;             
+		return 1;
 	} else {
-		return num * fact(num - 1);            
+		return num * fact(num - 1);
 	}
-} 
+}
 1234567
 ```
 
 以下代码可导致出错：
 
 ```java
-var anotherFact = fact; 
- fact = null; 
- alert(antherFact(4)); //出错 
+var anotherFact = fact;
+ fact = null;
+ alert(antherFact(4)); //出错
 123
 ```
 
@@ -863,7 +849,7 @@ function fact(num) {
             if (num <= 1) {
                 return 1;
             } else {
-                return num * arguments.callee(num - 1); //此处更改了。 
+                return num * arguments.callee(num - 1); //此处更改了。
             }
 }
 var anotherFact = fact;
@@ -947,7 +933,7 @@ function getJson(url){
                     resolve(this.responseText, this)
                 }else{
                     var resJson = { code: this.status, response: this.response }
-                    reject(resJson, this)    
+                    reject(resJson, this)
                 }
             }
         }
@@ -1090,7 +1076,7 @@ function deepCopy(obj){
 <3>.将两个排序好的子序列合并成一个最终的排序序列。
 
 ```php
-function mergeSort(arr) { 
+function mergeSort(arr) {
 	var len = arr.length;
 	if(len < 2) {
 		return arr;
@@ -1175,7 +1161,7 @@ ajax.send = function (url, method, data, success,fail,async) {
 			} else {
 				fail && fail(status);
 			}
-			
+
 		}
 	};
 	if (method == 'POST') {
@@ -1222,7 +1208,7 @@ ajax.post('/test.php', {foo: 'bar'}, function(response,xml) {
 
 },function(status){
 	//fail
-	
+
 });
 1234567
 ```
@@ -1709,8 +1695,6 @@ ajax.post('/test.php', {foo: 'bar'}, function(response,xml) {
 
 288、浏览器如何实现图片缓存
 
-
-
 # Vue常见面试题-1
 
 ## 一、对于MVVM的理解？
@@ -1846,12 +1830,12 @@ const store = new Vuex.Store({ //store实例
       state: {
          count: 0
              },
-      mutations: {                
+      mutations: {
          increment (state) {
           state.count++
          }
           },
-      actions: { 
+      actions: {
          increment (context) {
           context.commit('increment')
    }
@@ -1889,7 +1873,7 @@ const store = new Vuex.Store({
 ```
 var app = new Vue({
     el: '#app',
-    data: {    
+    data: {
     },
     // 创建指令(可以多个)
     directives: {
@@ -2044,8 +2028,6 @@ include 和 exclude 的属性允许组件有条件地缓存。二者都可以用
 **11.怎么定义 vue-router 的动态路由? 怎么获取传过来的值**
 答：在 router 目录下的 index.js 文件中，对 path 属性加上 /:id，使用 router 对象的 params.id 获取。
 
-
-
 # Vue面试题-2
 
 ## 1.什么是vue的生命周期？
@@ -2144,8 +2126,8 @@ include 和 exclude 的属性允许组件有条件地缓存。二者都可以用
 
 **解决办法：**
 
-> ①：使用混合型的css样式：（混合使用全局跟本地的样式） <style> /* 全局样式 */ </style><style scoped> /* 本地样式 */ </style>
-> ②：深度作用选择器（>>>）如果你希望 scoped 样式中的一个选择器能够作用得“更深”，例如影响子组件，你可以使用 >>> 操作符：<style scoped> .a >>> .b { /* ... */ } </style>
+> ①：使用混合型的css样式：（混合使用全局跟本地的样式） <style> /* 全局样式 _/ </style><style scoped> /_ 本地样式 _/ </style>
+> ②：深度作用选择器（>>>）如果你希望 scoped 样式中的一个选择器能够作用得“更深”，例如影响子组件，你可以使用 >>> 操作符：<style scoped> .a >>> .b { /_ ... */ } </style>
 
 ## 14.**vue是渐进式的框架的理解：(**主张最少,没有多做职责之外的事**)**
 
@@ -2170,7 +2152,7 @@ include 和 exclude 的属性允许组件有条件地缓存。二者都可以用
 > .lazy：v-model 在每次 input 事件触发后将输入框的值与数据进行同步 。你可以添加 lazy 修饰符，从而转变为使用 change 事件进行同步
 
 ```js
-<input v-model.lazy="msg" >  
+<input v-model.lazy="msg" >
 ```
 
 **.number**
@@ -2222,8 +2204,6 @@ include 和 exclude 的属性允许组件有条件地缓存。二者都可以用
 .meta
 ```
 
-
-
 ```js
 <input v-on:keyup.enter="submit"> 或者 <input @keyup.enter="submit">
 ```
@@ -2236,8 +2216,6 @@ include 和 exclude 的属性允许组件有条件地缓存。二者都可以用
 .shift
 .meta
 ```
-
-
 
 ```js
 <input @keyup.alt.67="clear"> 或者 <div @click.ctrl="doSomething">Do something</div><!-- Ctrl + Click -->
@@ -2347,7 +2325,7 @@ export default [
         <!-- 这里是会被缓存的视图组件，比如 Home！ -->
     </router-view>
 </keep-alive>
- 
+
 <router-view v-if="!$route.meta.keepAlive">
     <!-- 这里是不被缓存的视图组件，比如 Edit！ -->
 </router-view>
@@ -2364,22 +2342,22 @@ export default [
 > ⑤修改优化达到动态控制页面显示文字跟显示时间；
 
 ```js
-import Vue from 'vue'; 
+import Vue from 'vue';
 import Toast from '@/components/Toast';     //引入组件
 let ToastConstructor  = Vue.extend(Toast) // 返回一个“扩展实例构造器”
- 
+
 let myToast = (text,duration)=>{
     let toastDom = new ToastConstructor({
         el:document.createElement('div')    //将toast组件挂载到新创建的div上
     })
     document.body.appendChild( toastDom.$el )   //把toast组件的dom添加到body里
-    
+
     toastDom.text = text;
     toastDom.duration = duration;
- 
+
     // 在指定 duration 之后让 toast消失
     setTimeout(()=>{
-        toastDom.isShow = false;  
+        toastDom.isShow = false;
     }, toastDom.duration);
 }
 export default myToast;

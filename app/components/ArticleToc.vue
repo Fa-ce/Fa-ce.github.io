@@ -28,9 +28,7 @@ let runId = 0
 const hasLinks = computed(() => props.links.length > 0)
 
 /** 展平成文档顺序的 id 序列，用于定位当前章节 */
-const ids = computed(() =>
-  props.links.flatMap(l => [l.id, ...(l.children?.map(c => c.id) ?? [])])
-)
+const ids = computed(() => props.links.flatMap(l => [l.id, ...(l.children?.map(c => c.id) ?? [])]))
 
 /** 顶部安全线：全局 scroll-padding-top 已按页头高度设定，直接复用避免重复配置 */
 function topLine(): number {

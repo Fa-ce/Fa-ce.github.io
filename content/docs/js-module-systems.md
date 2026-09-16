@@ -31,11 +31,11 @@ source: 原有模块化笔记；尚学堂 ES6 课程 004_es6、006_webpack 学�
 
 ## 常见模块方案
 
-| 方案 | 导入／导出方式 | 说明 |
-| --- | --- | --- |
-| CommonJS | `require`、`module.exports` | Node 传统模块规范，浏览器经典脚本不能直接使用 |
-| AMD | `define`、`require` | 借助加载器组织异步模块加载 |
-| ES Module | `import`、`export` | 语言标准模块，浏览器和 Node 均可原生支持 |
+| 方案      | 导入／导出方式              | 说明                                          |
+| --------- | --------------------------- | --------------------------------------------- |
+| CommonJS  | `require`、`module.exports` | Node 传统模块规范，浏览器经典脚本不能直接使用 |
+| AMD       | `define`、`require`         | 借助加载器组织异步模块加载                    |
+| ES Module | `import`、`export`          | 语言标准模块，浏览器和 Node 均可原生支持      |
 
 模块化、转译和打包是不同工作。浏览器原生 ES Module 不要求先打包；兼容旧环境、处理依赖及资源时才按需要引入 Babel 或 Webpack。
 

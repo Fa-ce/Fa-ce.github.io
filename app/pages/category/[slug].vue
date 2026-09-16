@@ -97,12 +97,7 @@ const postsWithSource = computed(() =>
       </section>
 
       <!-- 空状态 -->
-      <EmptyState
-        v-else
-        title="暂无文章"
-        description="这个分类下还没有文章，敬请期待"
-        icon="inbox"
-      >
+      <EmptyState v-else title="暂无文章" description="这个分类下还没有文章，敬请期待" icon="inbox">
         <template #action>
           <NuxtLink
             to="/category"

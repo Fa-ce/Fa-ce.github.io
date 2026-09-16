@@ -5,17 +5,11 @@
  */
 
 const { data: blogPosts } = await useAsyncData('category-blog', () =>
-  queryCollection('blog')
-    .where('draft', '=', false)
-    .select('path', 'category')
-    .all()
+  queryCollection('blog').where('draft', '=', false).select('path', 'category').all()
 )
 
 const { data: docsPosts } = await useAsyncData('category-docs', () =>
-  queryCollection('docs')
-    .where('draft', '=', false)
-    .select('path', 'category')
-    .all()
+  queryCollection('docs').where('draft', '=', false).select('path', 'category').all()
 )
 
 useHead({ title: '分类 · Fa·ce' })

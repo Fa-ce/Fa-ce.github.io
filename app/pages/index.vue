@@ -24,9 +24,7 @@ const restPosts = computed(() => recentPosts.value?.slice(1) ?? [])
     <section style="background: var(--surface); border-bottom: 1px solid var(--border)">
       <div class="mx-auto max-w-5xl px-4 sm:px-6 pt-14 pb-14 sm:pt-24 sm:pb-20">
         <!-- 站点名称（栏目标记） -->
-        <p class="u-kicker">
-          Fa<span style="color: var(--accent)">·</span>ce Studio
-        </p>
+        <p class="u-kicker">Fa<span style="color: var(--accent)">·</span>ce Studio</p>
 
         <!-- Hero 标题：关键词着金，编辑风的大面积强调手法 -->
         <h1 class="u-hero mt-6 sm:mt-8">
@@ -34,7 +32,10 @@ const restPosts = computed(() => recentPosts.value?.slice(1) ?? [])
         </h1>
 
         <!-- 一句话定位 -->
-        <p class="mt-7 sm:mt-9 text-lg sm:text-xl leading-relaxed max-w-2xl" style="color: var(--fg-muted)">
+        <p
+          class="mt-7 sm:mt-9 text-lg sm:text-xl leading-relaxed max-w-2xl"
+          style="color: var(--fg-muted)"
+        >
           专注前端架构、工程化与深度知识总结。记录学习路上的洞察与实践。
         </p>
 
@@ -126,9 +127,7 @@ const restPosts = computed(() => recentPosts.value?.slice(1) ?? [])
           />
         </div>
       </div>
-      <div v-else class="mt-8 py-8 text-center u-muted">
-        暂无文章
-      </div>
+      <div v-else class="mt-8 py-8 text-center u-muted">暂无文章</div>
     </section>
 
     <!-- 分类导航区 -->
@@ -165,7 +164,11 @@ const restPosts = computed(() => recentPosts.value?.slice(1) ?? [])
       <!-- 8:4 不等分：正文占 8 列，CTA 靠右占 4 列；顶部 navy 粗线强化版块归属 -->
       <div
         class="mt-8 p-8 sm:p-10 rounded-lg grid gap-6 lg:grid-cols-12 lg:items-center"
-        style="background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary)"
+        style="
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-top: 3px solid var(--primary);
+        "
       >
         <p class="lg:col-span-8 leading-relaxed" style="color: var(--fg-muted)">
           系统整理的技术文档与学习笔记，涵盖前端开发、框架深度、工程实践等多个领域。

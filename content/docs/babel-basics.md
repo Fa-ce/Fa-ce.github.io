@@ -15,13 +15,13 @@ source: 尚学堂 ES6 课程 002_es6 至 007_webpack 的 Babel 相关笔记与�
 
 Babel 按配置把 JavaScript 语法转换为目标环境可理解的形式。它与打包器职责不同：转译处理语法，打包组织模块依赖与输出资源。
 
-| 包 | 作用 |
-| --- | --- |
-| `@babel/core` | 转译核心 |
-| `@babel/cli` | 命令行入口 |
-| `@babel/preset-env` | 按目标环境选择语法转换等配置 |
-| `@babel/preset-react` | JSX 等 React 相关语法转换 |
-| 单独 plugin | 处理某种具体语法或转换任务 |
+| 包                    | 作用                         |
+| --------------------- | ---------------------------- |
+| `@babel/core`         | 转译核心                     |
+| `@babel/cli`          | 命令行入口                   |
+| `@babel/preset-env`   | 按目标环境选择语法转换等配置 |
+| `@babel/preset-react` | JSX 等 React 相关语法转换    |
+| 单独 plugin           | 处理某种具体语法或转换任务   |
 
 仅转换语法不一定补齐运行时 API，例如目标环境缺少 Promise 时，还需要相应 polyfill。targets 和 polyfill 应按目标环境确定。[Babel 使用指南](https://babeljs.io/docs/usage)。
 

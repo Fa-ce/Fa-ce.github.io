@@ -17,7 +17,6 @@ const route = useRoute()
 // 而 content 库中存的 path 无尾斜杠，不规范化会导致线上详情页查不到内容而报 404
 const canonicalPath = route.path.replace(/\/+$/, '') || '/'
 
-
 const { data: page } = await useAsyncData('doc-' + canonicalPath, () =>
   queryCollection('docs').path(canonicalPath).first()
 )
@@ -55,9 +54,7 @@ const siblings = computed(() =>
 
 const cursor = computed(() => siblings.value.findIndex(d => d.path === canonicalPath))
 const prev = computed(() => (cursor.value > 0 ? siblings.value[cursor.value - 1] : undefined))
-const next = computed(() =>
-  cursor.value >= 0 ? siblings.value[cursor.value + 1] : undefined
-)
+const next = computed(() => (cursor.value >= 0 ? siblings.value[cursor.value + 1] : undefined))
 </script>
 
 <template>
@@ -102,10 +99,7 @@ const next = computed(() =>
         <article style="max-width: var(--measure)">
           <!-- 文档头：面包屑 → 栏目标记 → 标题 → 导语 -->
           <header class="pb-6 mb-8 border-b" style="border-color: var(--border)">
-            <nav
-              aria-label="面包屑"
-              class="flex flex-wrap items-center gap-x-2 gap-y-1 u-meta"
-            >
+            <nav aria-label="面包屑" class="flex flex-wrap items-center gap-x-2 gap-y-1 u-meta">
               <NuxtLink
                 to="/docs"
                 class="crumb inline-flex items-center min-h-11 cursor-pointer transition-colors duration-200"
@@ -169,11 +163,7 @@ const next = computed(() =>
           <ContentRenderer v-if="page" :value="page" class="prose" />
 
           <!-- 上一篇 / 下一篇：同分类内相邻 -->
-          <nav
-            v-if="prev || next"
-            aria-label="文档翻页"
-            class="mt-14 u-rule-bold pt-4"
-          >
+          <nav v-if="prev || next" aria-label="文档翻页" class="mt-14 u-rule-bold pt-4">
             <p class="u-kicker">Next</p>
             <h2 class="u-h3 mt-1">继续阅读</h2>
 

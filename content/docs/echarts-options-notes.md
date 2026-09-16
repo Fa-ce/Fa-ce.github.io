@@ -17,9 +17,9 @@ tags: [echarts, javascript, cheatsheet]
 - `grid`：直角坐标系内绘图网格，单个 grid内最多放置上下两个 x轴，左右两个 y轴。可以在网格上绘制：折线图、柱状图、散点图…… 属性：`top、right、bottom、left`：grid 组件
 
 - `legend`：图例组件。展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。
-  
-  - 属性：`type`，图例的类型，可选值。`plain`：普通图例；`scroll`：可翻页图例，图例数量较多是出现翻页。  `icon`：ECharts 提供的标记类型包括
-    
+
+  - 属性：`type`，图例的类型，可选值。`plain`：普通图例；`scroll`：可翻页图例，图例数量较多是出现翻页。 `icon`：ECharts 提供的标记类型包括
+
     `'circle'`, `'rect'`, `'roundRect'`, `'triangle'`, `'diamond'`, `'pin'`, `'arrow'`, `'none'`
 
 - `tooltip`：提示框组件。可以设置在多种地方，全局设置：`tooltip`；坐标系设置：`grid.tooltip`、`polar.tooltip`、`single.tooltip`；系列设置：`series.tooltip`；设置在系列的每个数据项：`series.data.tooltip`

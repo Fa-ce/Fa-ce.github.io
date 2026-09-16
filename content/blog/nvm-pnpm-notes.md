@@ -43,7 +43,7 @@ registry=https://registry.npmmirror.com/
 - 找到`nvm`安装路径，打开 `setting.txt` 文件。没有则创建一下![](/images/b-tools/af215104aa59abc8f572f51a48398cfe23fac0d3.png)
 
 - 修改完`setting.txt`文件的镜像配置即可，设置 `node_mirror` 和 `npm_mirror`为：
-  
+
   ```js
   node_mirror: https://npmmirror.com/mirrors/node/
   npm_mirror: https://npmmirror.com/mirrors/npm/
@@ -87,8 +87,8 @@ npm install -g @pnpm/exe
 | -------- | ----- | ----- | ----- | ----- |
 | node V12 | √     | √     | ×     | ×     |
 | node V14 | √     | √     | √     | ×     |
-| node V16 | 未知    | √     | √     | √     |
-| node V18 | 未知    | √     | √     | √     |
+| node V16 | 未知  | √     | √     | √     |
+| node V18 | 未知  | √     | √     | √     |
 
 **查看安装位置**
 
@@ -110,7 +110,7 @@ npm install -g @pnpm/exe
 
 # pnpm add 和 install
 
-`pnpm add `和` pnpm install `命令的本质是相同的，都可以用来安装依赖包。它们的区别在于用法和语法。
+`pnpm add `和`pnpm install`命令的本质是相同的，都可以用来安装依赖包。它们的区别在于用法和语法。
 
 - `pnpm add`会将安装的*包名*和*版本号*添加到`package.json`文件的`dependencies`或`devDenpendencies`中，`pnpm install`不会
 
@@ -122,14 +122,14 @@ npm install -g @pnpm/exe
 
 安装软件包以及其依赖的任何软件包。 默认情况下，任何新添加的软件包都将作为生产依赖项。
 
-| 命令                 | 用法                      |
-|:------------------:|:-----------------------:|
-| pnpm add sax       | 保存到dependencies         |
-| pnpm add -D sax    | 保存到devDependencies      |
-| pnpm add -O sax    | 保存到optionalDependencies |
-| pnpm add -g sax    | 安装到全局                   |
-| pnpm add sax@next  | 安装标记为 next 的版本          |
-| pnpm add sax@3.1.0 | 安装指定版本 3.1.0            |
+|        命令        |            用法            |
+| :----------------: | :------------------------: |
+|    pnpm add sax    |     保存到dependencies     |
+|  pnpm add -D sax   |   保存到devDependencies    |
+|  pnpm add -O sax   | 保存到optionalDependencies |
+|  pnpm add -g sax   |         安装到全局         |
+| pnpm add sax@next  |   安装标记为 next 的版本   |
+| pnpm add sax@3.1.0 |     安装指定版本 3.1.0     |
 
 `add`命令的来源：
 
@@ -165,11 +165,11 @@ npm install -g @pnpm/exe
 
 `install` 用来安装项目的全部依赖
 
-| Command 命令                 | Meaning 意义                      |
+| Command 命令               | Meaning 意义                    |
 | -------------------------- | ------------------------------- |
-| `pnpm i --offline`         | 使用本地缓存离线安装                      |
+| `pnpm i --offline`         | 使用本地缓存离线安装            |
 | `pnpm i --frozen-lockfile` | `pnpm-lock.yaml` is not updated |
-| `pnpm i --lockfile-only`   | 只更新`pnpm-lock.yaml`             |
+| `pnpm i --lockfile-only`   | 只更新`pnpm-lock.yaml`          |
 
 `install`支持的参数：
 
@@ -190,20 +190,20 @@ npm install -g @pnpm/exe
 - `–fix-lockfile`：自动修复损坏的lock文件入口。
 
 - `–frozen-lockfile`：默认值：非 CI: false。CI: true, 如果存在 lock 文件
-  
+
   - 如果设置 true， pnpm 不会生成 lockfile，而且如果 lockfile是偏旧或不存在lockfile则会安装失败.
 
 - `–reporter=name`：默认值：`TTY stdout: default`，`非 TTY stdout: append-only` 允许您选择将调试信息记录到终端, 以了解安装进度.
-  
+
   - `silent `- 控制台不展示任何信息
-  
+
   - `default ` - **TTY**的默认输出
-  
+
   - `append-only` - 始终向末尾追加输出
-  
+
   - `ndjson `- 打印所有ndjson格式日志，最详细的版本
-  
-  - `–use-store-server`：通过本地的store服务安装，安装完成后store服务不会自动关闭，*需要使用`pnpm server stop`停止*。
+
+  - `–use-store-server`：通过本地的store服务安装，安装完成后store服务不会自动关闭，_需要使用`pnpm server stop`停止_。
 
 - `–shamefully-hoist`：创建一个扁平化node_modules目录结构, 类似于npm 或 yarn。不推荐使用，可能会导致未知问题。
 

@@ -9,7 +9,7 @@ draft: true
 
 Axios 是一个基于 Promise 的 HTTP 库，可以在浏览器和 node.js 中使用。
 
-**axios** 功能强大的网络请求库： *Axios是一个基于Promise的HTTP库，可以用于浏览器和 Node.js* 特性: **支持promise API，自动转换JSON 数据，转换请求数据和响应数据，能拦截请求和响应** Axios 非常适合前后端数据交互，同时支持浏览器和Node 端使用
+**axios** 功能强大的网络请求库： _Axios是一个基于Promise的HTTP库，可以用于浏览器和 Node.js_ 特性: **支持promise API，自动转换JSON 数据，转换请求数据和响应数据，能拦截请求和响应** Axios 非常适合前后端数据交互，同时支持浏览器和Node 端使用
 
 ## 前置知识
 
@@ -371,7 +371,7 @@ axios.get('/user/12345', {
     cancel = c;
     // executor 函数接收一个 cancel 函数作为参数
 
-    /**  executor() 函数  
+    /**  executor() 函数
              * 引用 CancelToken 源码如下：
              * executor(function cancel(message) {
              *    if (token.reason) {
@@ -379,7 +379,7 @@ axios.get('/user/12345', {
              *  return;
                 }
              *  token.reason = new Cancel(message);
-             *  resolvePromise(token.reason);   
+             *  resolvePromise(token.reason);
              */
   })
 });
@@ -455,7 +455,7 @@ axios 依赖原生的 ES6 Promise 实现
 |  └axios.min.map
 ```
 
-`axios`与`Axios`的关系：1、从语法上来说：axios 不是 Axios 的实例            2、从功能上来说：axios 是 Axios  的实例
+`axios`与`Axios`的关系：1、从语法上来说：axios 不是 Axios 的实例            2、从功能上来说：axios 是 Axios 的实例
 
 **axios 发送请求** ： axios     Axios.prototype.request (axios 是由Axios通过bind创建而来)
 
@@ -515,27 +515,27 @@ Vue.use(VueAxiosPlugin, {
 
 **配置参数：** 除了 `axios` 提供的默认 `请求配置`， `vue-axios-plugin` 也提供了 `request / response` 拦截器配置：
 
- **示例**
+**示例**
 
 在 Vue 组件上添加了 `$http` 属性, 它默认提供 `get` 和 `post` 方法，使用如下:
 
 ```javascript
-this.$http.get(url, data, options).then((response) => {  
-  console.log(response)  
-})  
-this.$http.post(url, data, options).then((response) => {  
-  console.log(response)  
-})  
+this.$http.get(url, data, options).then((response) => {
+  console.log(response)
+})
+this.$http.post(url, data, options).then((response) => {
+  console.log(response)
+})
 ```
 
 你也可以通过 `this.$axios` 来使用 `axios` 所有的 api 方法，如下：
 
 ```javascript
-this.$axios.get(url, data, options).then((response) => {  
-  console.log(response)  
-})  
+this.$axios.get(url, data, options).then((response) => {
+  console.log(response)
+})
 
-this.$axios.post(url, data, options).then((response) => {  
-  console.log(response)  
+this.$axios.post(url, data, options).then((response) => {
+  console.log(response)
 })
 ```

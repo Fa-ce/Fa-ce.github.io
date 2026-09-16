@@ -66,7 +66,7 @@ if (res.code === 200) {
     style="width: 100%"
     max-height="400"
     @selection-change="handleSelectionChange"
-    :row-key="(row) => row.id" 
+    :row-key="(row) => row.id"
   >
     <el-table-column
       type="selection"
@@ -297,22 +297,22 @@ function rdmRgbColor() {
 - **报错**：
 
 <i style="color:red"> Error: Renderer 'undefined' is not imported. Please import it first. </i>
- at new ZRender (zrender.js:61:1)
- at Module.init (zrender.js:234:1)
- at new ECharts (echarts.js:254:1)
- at Module.init (echarts.js:2291:1)
- at VueComponent.initPie (VM1254 index.vue:465:72)
- at VueComponent.drawMain (VM1254 index.vue:317:14)
- at VueComponent.handleNodeClick (VM1254 index.vue:295:16)
- at async VueComponent.mounted (VM1254 index.vue:261:5)
+at new ZRender (zrender.js:61:1)
+at Module.init (zrender.js:234:1)
+at new ECharts (echarts.js:254:1)
+at Module.init (echarts.js:2291:1)
+at VueComponent.initPie (VM1254 index.vue:465:72)
+at VueComponent.drawMain (VM1254 index.vue:317:14)
+at VueComponent.handleNodeClick (VM1254 index.vue:295:16)
+at async VueComponent.mounted (VM1254 index.vue:261:5)
 
 - **报错**：
 
 <i style="color:red"> [Vue warn]: Error in mounted hook (Promise/async): "Error: Renderer 'undefined' is not imported. Please import it first."</i>
 
 ---> <DashboardPage> at src/plugin-weight-ahp/views/dashboard/index.vue
-       <App> at src/plugin-weight-ahp/App.vue
-         <Root>
+<App> at src/plugin-weight-ahp/App.vue
+<Root>
 
 - 原因分析：
 
@@ -346,7 +346,7 @@ function rdmRgbColor() {
         PieChart,
         LabelLayout,
         UniversalTransition,
-    ])   
+    ])
 ```
 
 需要引入并注册渲染器：

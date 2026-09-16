@@ -15,7 +15,6 @@ const route = useRoute()
 // 而 content 库中存的 path 无尾斜杠，不规范化会导致线上详情页查不到内容而报 404
 const canonicalPath = route.path.replace(/\/+$/, '') || '/'
 
-
 const { data: page } = await useAsyncData('blog-' + canonicalPath, () =>
   queryCollection('blog').path(canonicalPath).first()
 )
@@ -194,11 +193,7 @@ useHead({
         </div>
 
         <!-- 上下篇 -->
-        <nav
-          v-if="prev || next"
-          aria-label="上下篇导航"
-          class="mt-16 u-rule-bold pt-4"
-        >
+        <nav v-if="prev || next" aria-label="上下篇导航" class="mt-16 u-rule-bold pt-4">
           <p class="u-kicker">Next</p>
           <h2 class="u-h3 mt-1">继续阅读</h2>
 

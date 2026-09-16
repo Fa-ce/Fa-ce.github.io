@@ -54,13 +54,13 @@ console.log(target.greeting); // hello kevin
 
 ## 可拦截的操作
 
-| 操作 | trap |
-| --- | --- |
-| 读取、赋值、`in`、删除 | `get`、`set`、`has`、`deleteProperty` |
+| 操作                         | trap                                                    |
+| ---------------------------- | ------------------------------------------------------- |
+| 读取、赋值、`in`、删除       | `get`、`set`、`has`、`deleteProperty`                   |
 | 自身属性键、描述符、定义属性 | `ownKeys`、`getOwnPropertyDescriptor`、`defineProperty` |
-| 原型读写 | `getPrototypeOf`、`setPrototypeOf` |
-| 扩展性读写 | `isExtensible`、`preventExtensions` |
-| 函数调用、构造 | `apply`、`construct` |
+| 原型读写                     | `getPrototypeOf`、`setPrototypeOf`                      |
+| 扩展性读写                   | `isExtensible`、`preventExtensions`                     |
+| 函数调用、构造               | `apply`、`construct`                                    |
 
 共 13 种；函数调用和构造要求目标具备相应能力，普通对象不会因为设置 trap 就变成函数。
 

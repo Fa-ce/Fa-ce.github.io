@@ -15,7 +15,11 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-  <article class="border-b" :class="featured ? 'py-10 sm:py-12' : 'py-6'" style="border-color: var(--border)">
+  <article
+    class="border-b"
+    :class="featured ? 'py-10 sm:py-12' : 'py-6'"
+    style="border-color: var(--border)"
+  >
     <!-- byline：等宽小字 + 「·」分隔，模拟报头元信息 -->
     <div class="flex items-baseline flex-wrap gap-x-2 mb-2 u-meta">
       <time v-if="date" :datetime="date">{{ formatDate(date) }}</time>

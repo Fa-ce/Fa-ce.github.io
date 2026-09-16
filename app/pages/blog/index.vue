@@ -51,7 +51,10 @@ const categories = computed(() => {
   }
   const order = new Map(CATEGORIES.map((c, i) => [c.slug, i]))
   return [...count]
-    .sort((a, b) => (order.get(a[0]) ?? Number.MAX_SAFE_INTEGER) - (order.get(b[0]) ?? Number.MAX_SAFE_INTEGER))
+    .sort(
+      (a, b) =>
+        (order.get(a[0]) ?? Number.MAX_SAFE_INTEGER) - (order.get(b[0]) ?? Number.MAX_SAFE_INTEGER)
+    )
     .map(([slug, n]) => ({ slug, name: categoryName(slug), count: n }))
 })
 
@@ -110,7 +113,9 @@ function selectCategory(slug: string) {
   // 切换分类时，仅当已选标签在新分类下仍有结果才保留，否则丢弃，避免直接掉进空状态
   const base = slug ? allPosts.value.filter(p => p.category === slug) : allPosts.value
   const keepTag =
-    activeTag.value && base.some(p => p.tags?.includes(activeTag.value)) ? activeTag.value : undefined
+    activeTag.value && base.some(p => p.tags?.includes(activeTag.value))
+      ? activeTag.value
+      : undefined
   apply({ category: slug || undefined, tag: keepTag, page: undefined })
 }
 
@@ -141,16 +146,15 @@ function goPage(n: number) {
 
 <template>
   <!-- 页头：与下方容器平级，避免 PageHeader 自带的 max-w/px 与外层容器叠加缩进 -->
-  <PageHeader
-    kicker="Blog"
-    title="博客"
-    :meta="`共 ${allPosts.length} 篇文章`"
-    :bordered="false"
-  />
+  <PageHeader kicker="Blog" title="博客" :meta="`共 ${allPosts.length} 篇文章`" :bordered="false" />
 
   <div class="mx-auto max-w-5xl px-4 sm:px-6 pb-4">
     <!-- 分类筛选 -->
-    <nav aria-label="分类筛选" class="u-rule-bold border-b" style="border-bottom-color: var(--border)">
+    <nav
+      aria-label="分类筛选"
+      class="u-rule-bold border-b"
+      style="border-bottom-color: var(--border)"
+    >
       <ul class="filter-scroll flex items-center gap-1 overflow-x-auto py-2">
         <li class="shrink-0">
           <button
@@ -184,9 +188,7 @@ function goPage(n: number) {
       class="py-5 border-b"
       style="border-color: var(--border)"
     >
-      <h2 id="tag-filter-heading" class="u-kicker">
-        标签
-      </h2>
+      <h2 id="tag-filter-heading" class="u-kicker">标签</h2>
       <ul class="mt-3 flex flex-wrap gap-2">
         <li v-for="[tag, n] in tags" :key="tag">
           <button
@@ -218,10 +220,14 @@ function goPage(n: number) {
     </section>
 
     <!-- 结果概览 + 清除入口 -->
-    <div v-if="hasFilter && filtered.length" class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
+    <div
+      v-if="hasFilter && filtered.length"
+      class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-5"
+    >
       <p class="u-meta">
         筛选出 {{ filtered.length }} 篇<template v-if="totalPages > 1">
-          · 第 {{ page }} / {{ totalPages }} 页</template>
+          · 第 {{ page }} / {{ totalPages }} 页</template
+        >
       </p>
       <button
         type="button"
@@ -339,7 +345,8 @@ function goPage(n: number) {
             class="inline-flex items-center justify-center w-11 h-11 u-mono text-sm"
             style="color: var(--fg-subtle)"
             aria-hidden="true"
-          >…</span>
+            >…</span
+          >
           <button
             v-else
             type="button"

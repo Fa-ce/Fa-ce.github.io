@@ -30,11 +30,11 @@ promise.then(value => {
 events.push('sync');
 ```
 
-| 状态 | 含义 |
-| --- | --- |
-| `pending` | 尚未兑现或拒绝 |
+| 状态        | 含义             |
+| ----------- | ---------------- |
+| `pending`   | 尚未兑现或拒绝   |
 | `fulfilled` | 已兑现，有结果值 |
-| `rejected` | 已拒绝，有原因 |
+| `rejected`  | 已拒绝，有原因   |
 
 从 pending 进入 fulfilled 或 rejected 后，状态不能再改变。`resolved` 不是第四种状态，也不总等于 fulfilled：调用 `resolve(另一个 Promise)` 会跟随它，仍可能暂时 pending 或最终 rejected。[ECMAScript Promise 规范](https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise-objects)。
 
@@ -108,13 +108,13 @@ Promise.reject(new Error('第一次失败'))
 
 ## Promise 组合方法
 
-| 方法 | 行为 |
-| --- | --- |
-| `Promise.all(items)` | 全部成功后按输入顺序返回值数组；任一拒绝则整体拒绝 |
-| `Promise.race(items)` | 跟随最先落定的结果，可能成功也可能失败 |
-| `Promise.allSettled(items)` | 等待全部落定，按输入顺序返回各自状态和值或原因 |
-| `Promise.resolve(value)` | 得到采用 value 结果的 Promise，包括吸收 thenable |
-| `Promise.reject(reason)` | 得到以 reason 拒绝的 Promise |
+| 方法                        | 行为                                               |
+| --------------------------- | -------------------------------------------------- |
+| `Promise.all(items)`        | 全部成功后按输入顺序返回值数组；任一拒绝则整体拒绝 |
+| `Promise.race(items)`       | 跟随最先落定的结果，可能成功也可能失败             |
+| `Promise.allSettled(items)` | 等待全部落定，按输入顺序返回各自状态和值或原因     |
+| `Promise.resolve(value)`    | 得到采用 value 结果的 Promise，包括吸收 thenable   |
+| `Promise.reject(reason)`    | 得到以 reason 拒绝的 Promise                       |
 
 组合方法不负责“启动”已有 Promise，也不会自动取消其他任务。
 

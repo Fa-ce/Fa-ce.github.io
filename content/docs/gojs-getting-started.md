@@ -263,13 +263,13 @@ $ node ignoreGoJS
 
 ## 画布操作
 
-| 作用                                | api                                                                                                                                                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 获取当前画布的 json                      | myDiagram.model.toJson()                                                                                                                                                                                                 |
-| 加载 json 刷新画布                      | myDiagram.model = go.Model.fromJson(model)                                                                                                                                                                               |
-| 删除选中节点或线                          | myDiagram.commandHandlr.deleteSelection()                                                                                                                                                                                |
+| 作用                                       | api                                                                                                                                                                                                                                             |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 获取当前画布的 json                        | myDiagram.model.toJson()                                                                                                                                                                                                                        |
+| 加载 json 刷新画布                         | myDiagram.model = go.Model.fromJson(model)                                                                                                                                                                                                      |
+| 删除选中节点或线                           | myDiagram.commandHandlr.deleteSelection()                                                                                                                                                                                                       |
 | 获取选中的节点或线<br/>myDiagram.selection | - 用例获取选中的节点或线<br/> var nodeOrLinkList = myDiagram.selection<br/> nodeOrLinkList.each((node) => {<br/>        console.info(node.data)<br/>    })<br/>- 获取第一个选中的节点或线<br/>var nodeOrLinkFirst = myDiagram.selection.first() |
-| 获取画布所有节点对象<br/>myDiagram.nodes    | var nodes = myDiagram.nodes<br/>// 遍历输出节点对象<br/>nodes.each((node) => {<br/>    console.info(node.data.text)<br/>})                                                                                                       |
+| 获取画布所有节点对象<br/>myDiagram.nodes   | var nodes = myDiagram.nodes<br/>// 遍历输出节点对象<br/>nodes.each((node) => {<br/>    console.info(node.data.text)<br/>})                                                                                                                      |
 
 获取并操作选中元素也可以在监听选中项进行修改：
 
@@ -294,19 +294,19 @@ $ node ignoreGoJS
 
 ## 节点操作
 
-| 作用                                                                      | API                                                                                                                                                                                                                                                                                                |
-| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 添加节点                                                                    | myDiagram.model.addNodeData(node)                                                                                                                                                                                                                                                                  |
-| 删除节点                                                                    | myDiagram.model.removeNodeData(node)                                                                                                                                                                                                                                                               |
-| 选中单个节点(不能批量选中)                                                          | myDiagram.select(node)                                                                                                                                                                                                                                                                             |
-| 更改节点属性                                                                  | myDiagram.model.setDataProperty(node,<br/> "color",'#000")<br/>(参数对应：要修改的节点、要修改的属性名、修改后的属性值)                                                                                                                                                                                                       |
+| 作用                                                                                  | API                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 添加节点                                                                              | myDiagram.model.addNodeData(node)                                                                                                                                                                                                                                                                  |
+| 删除节点                                                                              | myDiagram.model.removeNodeData(node)                                                                                                                                                                                                                                                               |
+| 选中单个节点(不能批量选中)                                                            | myDiagram.select(node)                                                                                                                                                                                                                                                                             |
+| 更改节点属性                                                                          | myDiagram.model.setDataProperty(node,<br/> "color",'#000")<br/>(参数对应：要修改的节点、要修改的属性名、修改后的属性值)                                                                                                                                                                            |
 | 根据节点数据对象更改节点属性<br/>myDiagram.model.<br/>updateTargetBindings<br/>(node) | var node = myDiagram.model.<br/>findNodeDataForKey('nodeKey')<br/>  node.text = 'newText'<br/>  node.color = 'pink'<br/>  myDiagram.model.updateTargetBindings(node)                                                                                                                               |
-| 获取节点对象                                                                  | let node = myDiagram.findNodeForKey('key')                                                                                                                                                                                                                                                         |
-| 获取节点Data                                                                | let nodeData = myDiagram.model.<br/>  findNodeDataForKey(‘key')                                                                                                                                                                                                                                    |
-| 批量删除节点<br/>myDiagram.model.<br/> removeNodeDataCollection<br/>(nodes)   | let removeNodes = []<br/>let removeNode0 = myDiagram.model.<br/>  findNodeDataForKey('key0')<br/>let removeNode1 = myDiagram.model.<br/>  findNodeDataForKey('key1')<br/>removeNodes.push(removeNode0)<br/>removeNodes.push(removeNode0)<br/>myDiagram.model.removeNodeDataCollection(removeNodes) |
+| 获取节点对象                                                                          | let node = myDiagram.findNodeForKey('key')                                                                                                                                                                                                                                                         |
+| 获取节点Data                                                                          | let nodeData = myDiagram.model.<br/>  findNodeDataForKey(‘key')                                                                                                                                                                                                                                    |
+| 批量删除节点<br/>myDiagram.model.<br/> removeNodeDataCollection<br/>(nodes)           | let removeNodes = []<br/>let removeNode0 = myDiagram.model.<br/>  findNodeDataForKey('key0')<br/>let removeNode1 = myDiagram.model.<br/>  findNodeDataForKey('key1')<br/>removeNodes.push(removeNode0)<br/>removeNodes.push(removeNode0)<br/>myDiagram.model.removeNodeDataCollection(removeNodes) |
 
 - 批量删除节点
-  
+
   ```javascript
   let removeNodes = []
   let removeNode0 = myDiagram.model.findNodeDataForKey('key0')
@@ -317,10 +317,10 @@ $ node ignoreGoJS
   ```
 
 - 模糊获取节点 (版本 1.68 以上)：
-  
+
   ```js
   myDiagram.findNodesByExample(data)
-  /* 
+  /*
   匹配方式默认为===运算符进行比较。
   /abc/ 匹配包含“abc”的任何字符串
   /abc/i 匹配包含“abc”的任何字符串，忽略大小写
@@ -349,7 +349,7 @@ $ node ignoreGoJS
 - 删除线：`myDiagram.model.removeLinkData(linkData)`
 
 - 批量删除线：
-  
+
   ```js
   ｛ Array | iterator } removeLinks
   removeLinkDataCollection(removeLinks)
@@ -365,7 +365,7 @@ $ node ignoreGoJS
   ```
 
 - 模糊获取线 (1.68版本以上)：
-  
+
   ```js
   myDiagram.findLinksByExample(data)
   // 匹配方式和模糊获取节点的规则一致
@@ -380,7 +380,7 @@ $ node ignoreGoJS
 - 更改属性值：`myDiagram.model.setDataProperty(linkData, 'color', 'green')`
 
 - 获取节点的线：
-  
+
   ```js
   {string | null =} PID 端口ID
   findLinksConnected(PID)
@@ -392,7 +392,7 @@ $ node ignoreGoJS
   ```
 
 - 获取进入节点的线：
-  
+
   ```js
   {string | null =} PID 端口ID
   findLinksInto(PID)
@@ -404,7 +404,7 @@ $ node ignoreGoJS
   ```
 
 - 获取从节点出来的线：
-  
+
   ```js
   {string | null =} PID 端口ID
   findLinksOutOf(PID)
@@ -416,7 +416,7 @@ $ node ignoreGoJS
   ```
 
 - 获取两个节点之间的线
-  
+
   ```js
   {node } othernode B节点对象
   {string | null =} PID 端口ID
@@ -433,7 +433,7 @@ $ node ignoreGoJS
 ## 树节点
 
 - 找节点的所有父祖节点，包括该节点
-  
+
   ```js
   node.findTreeParentChain()
   /* 实现 */
@@ -443,7 +443,7 @@ $ node ignoreGoJS
   ```
 
 - 找节点的所有子孙节点，包括该节点
-  
+
   ```js
   node.findTreeParts()
   /* 实现 */
@@ -453,7 +453,7 @@ $ node ignoreGoJS
   ```
 
 - 找节点的父
-  
+
   ```js
   node.findTreeParentNode()
   /* 实现 */
@@ -461,7 +461,7 @@ $ node ignoreGoJS
   ```
 
 - 找节点的子
-  
+
   ```js
   node.findTreeChildrenNodes()
   /* 实现 */
@@ -473,19 +473,19 @@ $ node ignoreGoJS
 # 画布常用增删改查API
 
 - **添加画布元素**
-  
+
   ```javascript
   // 添加节点
   addNodeData(NodeData)
   // 添加连线
   addLinkData(LinkData)
-  
+
   /* 实现 */
-  
+
     // 添加节点
    let node = {
       key: id,
-      id: id,                   
+      id: id,
       color: "#fff",
       name: name,
       color2: "#000",
@@ -504,7 +504,7 @@ $ node ignoreGoJS
       },
     };
   this.diagram.model.addNodeData(node);
-  
+
     // 添加连线
     let link = {
             from: from,
@@ -517,7 +517,7 @@ $ node ignoreGoJS
   ```
 
 - **删除画布元素**
-  
+
   ```js
     // 删除节点
   removeNodeData(nodeData)
@@ -527,14 +527,14 @@ $ node ignoreGoJS
     // 通过节点的 key 拿到节点对象并删除
     let node = this.diagram.model.findNodeDataForKey(this.nodeFrom.key);
     this.diagram.model.removeNodeData(node);
-  
+
     // 通过事件获取到要删除的连线 id，查找并删除
     this.association.forEach((item) => { /* this.association 是我当前画布的所有连线对象 */
         if (item.id === this.checkId) { /* 查找要删除的连线 */
             this.diagram.model.removeLinkData(item);
         }
     });
-  
+
     // 也可以通过获取画布选中对象进行删除, 初始化 GoJS的时候绑定选中项监听
     // 监听选中项
     let that = this
@@ -554,32 +554,32 @@ $ node ignoreGoJS
   ```
 
 - **更新画布元素**
-  
+
   ```js
   setDataProperty(data，propName，val)
-  // 参数: 
+  // 参数:
     //         data：NodeData或LinkData对象
     //        propName：要更新的属性名
     //        val：要更新的属性值
-  
+
   /* 实现 */
     // 拿到节点
-  const nodeData = myDiagram.model.findNodeDataForKey('key') 
+  const nodeData = myDiagram.model.findNodeDataForKey('key')
   // 对元素对象的属性更改的时候，如果没有该属性则添加这个属性
   myDiagram.model.setDataProperty(nodeData, 'text', '2333')
   ```
 
 - **查询画布元素**
-  
+
   ```js
   // 通过 key 获取节点
   findNodeDataForKey('key')
   // 通过 linkData 模糊查询匹配线集合
   findLinksByExample(linkData)
-  
+
   /* 实现 */
   const nodeData = myDiagram.model.findNodeDataForKey('key')
-  
+
   // 根据 linkData，模糊匹配线集合，linkData 可以为线的部分属性
   let linkData = {
       from:'1',
@@ -591,49 +591,50 @@ $ node ignoreGoJS
       console.info(links.value.data)
   }
   ```
-  
+
   # addDiagramListener
-  
+
   GoJS的addDiagramListener函数可以监听画布的事件属性：
-  
+
   ```js
   myDiagram.addDiagramListener("ObjectContextClicked",function (e, i) {
       console.log("e:", e);
   });
   ```
-  
+
   1. **用户交互事件**
-     
+
      - **ObjectSingleClicked**：图形对象（如节点或连线）被单击时触发。
      - **ObjectDoubleClicked**：图形对象被双击时触发。
      - **ObjectContextClicked**：图形对象被右键点击时触发。
      - **BackgroundSingleClicked**：图表背景被单击时触发。
      - **BackgroundDoubleClicked**：图表背景被双击时触发。
      - **BackgroundContextClicked**：图表背景被右键点击时触发。
+
 2. **选择事件**
-   
+
    - **ChangingSelection**：选择集合即将改变之前触发。
    - **ChangedSelection**：选择集合已经改变之后触发。
 
 3. **剪切板事件**
-   
+
    - **ClipboardChanged**：零部件已被复制到剪贴板上时触发。
    - **ClipboardPasted**：零部件已从剪贴板粘贴到图表中时触发。
 
 4. **布局和动画事件**
-   
+
    - **AnimationStarting**：图表动画开始之前触发。
    - **AnimationFinished**：图表动画完成之后触发。
    - **InitialLayoutCompleted**：图表初始化布局完成后触发。
    - **LayoutCompleted**：图表布局完成后触发。
 
 5. **图表状态变化事件**
-   
+
    - **DocumentBoundsChanged**：图表中各零部件的面积或边界发生变化时触发。
    - **ViewportBoundsChanged**：图表的视图范围（即用户当前可见的区域）发生变化时触发。
 
 6. **特定操作事件**
-   
+
    - **LinkDrawn**：用户通过LinkingTool创建新链接时触发。
    - **LinkRelinked**：用户通过RelinkingTool或DraggingTool重新连接现有链接时触发。
    - **LinkReshaped**：用户通过LinkReshapingTool调整链接路径时触发。
@@ -643,7 +644,7 @@ $ node ignoreGoJS
    - **SelectionDeleted**：选中的图表元素已被删除后触发。
 
 7. **其他事件**
-   
+
    - **GainedFocus**：图表获得键盘焦点时触发。
    - **LostFocus**：图表失去键盘焦点时触发。
    - **Modified**：图表的修改状态发生变化时触发（例如，当用户更改了图表的内容但尚未保存时）。
@@ -653,13 +654,13 @@ $ node ignoreGoJS
 GoJS 在默认情况下不会自动居中对齐，要在浏览器窗口大小改变时，自动将 GoJS 画布内元素居中对齐
 
 - `contentAlignment`
-  
+
   1. `Diagram`中可以设置`contentAlignment`内容对齐，但这个设置会在画布元素拖拽之后自动布局，导致元素无法被拖动
-  
+
   2. `initialContentAlignment`是在初始化时居中对齐，对于缩放之后不会再次生效
 
 - `alignDocument`
-  
+
   - `alignDocument`方法可以手动设置对齐方式，但缩放几次之后还是会出现无法对齐的情况
 
 解决思路：
@@ -667,10 +668,10 @@ GoJS 在默认情况下不会自动居中对齐，要在浏览器窗口大小改
 在`onresize`事件中，先将`contentAlignment`设置为`Center`，再调用`alignDocument`方法将元素在`document`和`viewport`中都居中，然后再将`contentAlignment`改为`default`
 
 ```js
-let that = this 
+let that = this
 window.addEventListener('resize',() =>{
   that.diagram.contentAlignment = go.Spot.Center
-  that.diagram.alignDocument(go.Spot.Center, go.Spot.Center)  
+  that.diagram.alignDocument(go.Spot.Center, go.Spot.Center)
   that.diagram.contentAlignment = go.Spot.Default
 })
 ```

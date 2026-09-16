@@ -21,6 +21,7 @@ WebSocket 使得客户端和服务器之间的数据交换变得更加简单，�
 HTML5 定义的 WebSocket 协议，能更好的节省服务器资源和带宽，并且能够更实时地进行通讯。
 
 <!-- TODO(图片失效): 本机绝对路径不可恢复 | alt="img" | src=E:/Study/WebSocket/WebSocket.assets/ws.png -->
+
 > ⚠️ 此处原有本地截图，路径已失效，待补。
 
 浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。
@@ -65,4 +66,3 @@ WebSocket 协议本质上是一个基于 TCP 的协议。
 发送消息(方法)：ws.send()
 
 监听通道关闭(事件)：ws.onclose = function(){}
-

@@ -9,9 +9,9 @@ draft: true
 
 # npm
 
-node package manager        node包管理器
+node package manager node包管理器
 作用：
-    1、快速构件 nodejs 工具
+1、快速构件 nodejs 工具
 
 ```json
  - npm init //初始化。 初始化之后得到一个 package.json 文件
@@ -28,25 +28,25 @@ node package manager        node包管理器
     }
 ```
 
- 2、快速安装和依赖第三方模块。例：instal vue-router等
+2、快速安装和依赖第三方模块。例：instal vue-router等
 
 ```JavaScript
 1、安装第三方模块
     npm install xxx   或者   npm i xxx模块名
-2、安装模块放在         
+2、安装模块放在
     node_modules 文件夹中
 3、安装的模块如何使用        - require
-4、运行：            node xxx.js     运行过程中可以省略 ,js 
-5、模块和package.js 的关系：    
-    通过 npm i xxx 模块会记录在 package.json 文件中。        
+4、运行：            node xxx.js     运行过程中可以省略 ,js
+5、模块和package.js 的关系：
+    通过 npm i xxx 模块会记录在 package.json 文件中。
   记录作用：复用。 通过 npm i 可以直接把 package.json 所有依赖的模块全部自动下载下来
-6、配置 cnpm        
+6、配置 cnpm
     npm install cnpm -g --registry=https://registry.npmmirror.com
 7、下载指定版本
     npm install    xxx@版本号        (具体版本号查看官方网址)
 ```
 
-3、卸载        npm uninstall xxx
+3、卸载 npm uninstall xxx
 
 ## npm和node-sass版本
 
@@ -74,7 +74,7 @@ CommonJS模块化开发，必须导出来才能使用。Exports导出，require�
 
 3、在 src 存放两个需要合并的 js文件
 
-4、准备一个入口文件 main.js 
+4、准备一个入口文件 main.js
 
 JS打包：
 

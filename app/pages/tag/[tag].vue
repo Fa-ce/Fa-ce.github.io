@@ -50,7 +50,8 @@ const allTags = computed(() => {
 
   for (const post of merged) {
     for (const t of post.tags ?? []) {
-      if (t !== tag) { // 排除当前标签
+      if (t !== tag) {
+        // 排除当前标签
         count.set(t, (count.get(t) ?? 0) + 1)
       }
     }
@@ -69,9 +70,7 @@ const allTags = computed(() => {
   <PageHeader kicker="Tag" :title="tag" :meta="`共 ${allPosts.length} 篇文章`">
     <template #title>
       <div class="flex flex-wrap items-baseline gap-3">
-        <span class="u-mono text-sm font-semibold" style="color: var(--accent-text)">
-          标签
-        </span>
+        <span class="u-mono text-sm font-semibold" style="color: var(--accent-text)"> 标签 </span>
         <span class="u-mono">{{ tag }}</span>
       </div>
     </template>
@@ -94,11 +93,7 @@ const allTags = computed(() => {
     </section>
 
     <!-- 空状态 -->
-    <EmptyState
-      v-else
-      title="暂无标记该标签的文章"
-      icon="search"
-    >
+    <EmptyState v-else title="暂无标记该标签的文章" icon="search">
       <template #action>
         <NuxtLink
           to="/blog"
@@ -126,18 +121,9 @@ const allTags = computed(() => {
     </EmptyState>
 
     <!-- 相关标签导航 -->
-    <section
-      v-if="allTags.length"
-      aria-labelledby="related-tags-heading"
-      class="pt-12"
-    >
+    <section v-if="allTags.length" aria-labelledby="related-tags-heading" class="pt-12">
       <!-- 栏目头：粗线 + 栏目标记 -->
-      <h2
-        id="related-tags-heading"
-        class="u-kicker u-rule-bold pt-4"
-      >
-        相关标签
-      </h2>
+      <h2 id="related-tags-heading" class="u-kicker u-rule-bold pt-4">相关标签</h2>
       <ul class="mt-4 flex flex-wrap gap-2">
         <li v-for="t in allTags" :key="t">
           <NuxtLink

@@ -17,11 +17,13 @@ tags: [vue, vue-router, source-code, browser]
 `www.test.com/##/` 就是 Hash URL，当 `##` 后面的哈希值发生变化时，不会向服务器请求数据，可以通过 `hashchange` 事件来监听到 URL 的变化，从而进行跳转页面。
 
 <!-- TODO(图片失效): 原地址已 404，需补图 | alt="" | src=https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-033157.png -->
+
 > ⚠️ 此处原有配图，来源地址已失效，待补。
 
 History 模式是 HTML5 新推出的功能，比之 Hash URL 更加美观
 
 <!-- TODO(图片失效): 原地址已 404，需补图 | alt="" | src=https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-033159.png -->
+
 > ⚠️ 此处原有配图，来源地址已失效，待补。
 
 ## VueRouter 源码解析
@@ -30,6 +32,7 @@ History 模式是 HTML5 新推出的功能，比之 Hash URL 更加美观
 
 以下思维导图罗列了源码中重要的一些函数
 <!-- TODO(图片失效): 原地址已 404，需补图 | alt="" | src=https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-033202.png -->
+
 > ⚠️ 此处原有配图，来源地址已失效，待补。
 
 ### 路由注册

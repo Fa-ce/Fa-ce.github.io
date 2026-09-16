@@ -12,7 +12,11 @@ const NAV = [
 <template>
   <header
     class="sticky top-0 z-50 border-b backdrop-blur"
-    style="border-color: var(--border); background: color-mix(in srgb, var(--bg) 88%, transparent); height: var(--header-h)"
+    style="
+      border-color: var(--border);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      height: var(--header-h);
+    "
   >
     <div class="mx-auto max-w-7xl h-full px-4 sm:px-6 flex items-center gap-4">
       <NuxtLink
@@ -57,7 +61,9 @@ const NAV = [
           aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+          />
         </svg>
         <svg
           class="icon-moon"
@@ -107,7 +113,7 @@ const NAV = [
 }
 /* 指示线走 ::after 绝对定位：不参与布局，不撑高 44px 触摸目标 */
 .nav-link.router-link-active::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;

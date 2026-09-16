@@ -48,12 +48,12 @@ exports.default = series(ready, parallel(copyScripts, copyStyles));
 
 `src(glob)` 读取匹配文件为文件对象流，`.pipe(transform)` 连接处理步骤，`.pipe(dest(directory))` 写入目录并继续输出文件流。
 
-| glob | 含义 |
-| --- | --- |
-| `a.js` | 单文件 |
-| `js/*.js` | 当前目录下的 JS |
-| `js/**/*.js` | 目录及子目录中的 JS |
-| `['a.js', 'b.js']` | 多个匹配模式 |
+| glob                             | 含义                   |
+| -------------------------------- | ---------------------- |
+| `a.js`                           | 单文件                 |
+| `js/*.js`                        | 当前目录下的 JS        |
+| `js/**/*.js`                     | 目录及子目录中的 JS    |
+| `['a.js', 'b.js']`               | 多个匹配模式           |
 | `['js/**/*.js', '!js/build.js']` | 包含匹配并排除一个文件 |
 
 ## 压缩与重命名
