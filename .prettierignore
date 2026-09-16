@@ -1,0 +1,14 @@
+# 构建产物与缓存
+.nuxt
+.output
+dist
+output
+.data
+.playwright-cli
+
+# 依赖与锁文件
+node_modules
+pnpm-lock.yaml
+
+# 静态资源（图片等二进制）
+public

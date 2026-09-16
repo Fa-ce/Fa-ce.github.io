@@ -65,9 +65,42 @@
   "tags": {
     "_说明": "按域分组仅为便于查阅，实际使用时是扁平的",
     "语言与运行时": ["javascript", "typescript", "es6", "html", "css", "nodejs", "markdown"],
-    "框架与库": ["vue", "vue3", "vuex", "vue-router", "axios", "echarts", "gojs", "webpack", "vite", "canvas", "svg"],
-    "环境与系统": ["wsl2", "linux", "windows", "nvm", "npm", "pnpm", "network", "proxy", "port-forwarding"],
-    "概念与主题": ["source-code", "reactivity", "module-system", "http", "websocket", "design-pattern", "performance", "debugging", "browser", "font"],
+    "框架与库": [
+      "vue",
+      "vue3",
+      "vuex",
+      "vue-router",
+      "axios",
+      "echarts",
+      "gojs",
+      "webpack",
+      "vite",
+      "canvas",
+      "svg"
+    ],
+    "环境与系统": [
+      "wsl2",
+      "linux",
+      "windows",
+      "nvm",
+      "npm",
+      "pnpm",
+      "network",
+      "proxy",
+      "port-forwarding"
+    ],
+    "概念与主题": [
+      "source-code",
+      "reactivity",
+      "module-system",
+      "http",
+      "websocket",
+      "design-pattern",
+      "performance",
+      "debugging",
+      "browser",
+      "font"
+    ],
     "内容形态": ["guide", "troubleshooting", "cheatsheet", "best-practice", "notes"],
     "AI 与智能体": ["ai", "claude-code", "agent"]
   },
