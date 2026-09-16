@@ -1,7 +1,7 @@
 {
   "$schema": "内容分类字典 —— 唯一权威来源，所有 frontmatter 的 category/tags 必须取自本文件",
-  "version": "1.0.0",
-  "updated": "2026-09-02",
+  "version": "1.1.0",
+  "updated": "2026-09-14",
   "status": "已确认生效",
 
   "_rules": {
@@ -53,6 +53,12 @@
       "name": "面试题",
       "desc": "面试考点整理与解析",
       "channel": "docs"
+    },
+    {
+      "slug": "ai-agent",
+      "name": "AI 与智能体",
+      "desc": "AI 编程工具与 Agent 工作流的配置、用法与成本优化实践",
+      "channel": "blog"
     }
   ],
 
@@ -62,7 +68,8 @@
     "框架与库": ["vue", "vue3", "vuex", "vue-router", "axios", "echarts", "gojs", "webpack", "vite", "canvas", "svg"],
     "环境与系统": ["wsl2", "linux", "windows", "nvm", "npm", "pnpm", "network", "proxy", "port-forwarding"],
     "概念与主题": ["source-code", "reactivity", "module-system", "http", "websocket", "design-pattern", "performance", "debugging", "browser", "font"],
-    "内容形态": ["guide", "troubleshooting", "cheatsheet", "best-practice", "notes"]
+    "内容形态": ["guide", "troubleshooting", "cheatsheet", "best-practice", "notes"],
+    "AI 与智能体": ["ai", "claude-code", "agent"]
   },
 
   "frontmatter_schema": {

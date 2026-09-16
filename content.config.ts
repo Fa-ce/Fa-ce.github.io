@@ -1,6 +1,6 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
-// 与 meta/taxonomy.json v1.0.0 保持一致，改动分类须同步两处
+// 与 meta/taxonomy.json v1.1.0 保持一致，改动分类须同步两处
 const CATEGORIES = [
   'source-code',
   'devops',
@@ -8,7 +8,8 @@ const CATEGORIES = [
   'standards',
   'fundamentals',
   'toolchain',
-  'interview'
+  'interview',
+  'ai-agent'
 ] as const
 
 // 博客与文档共用的 frontmatter 约束
