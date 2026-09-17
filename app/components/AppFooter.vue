@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import site from '~/data/site.json'
+
 const year = 2026
+const LINKS = site.links
 </script>
 
 <template>
@@ -26,13 +29,13 @@ const year = 2026
               >文档</NuxtLink
             >
           </li>
-          <li>
+          <li v-for="link in LINKS" :key="link.href">
             <a
-              href="https://github.com/Fa-ce"
+              :href="link.href"
               target="_blank"
               rel="noopener noreferrer"
               class="u-underline cursor-pointer inline-flex min-h-11 items-center"
-              >GitHub</a
+              >{{ link.label }}</a
             >
           </li>
         </ul>

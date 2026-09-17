@@ -1,0 +1,8 @@
+{
+  "$schema": "站点级配置：对外平台链接，页脚等处统一读取，新增平台只改这里",
+  "links": [
+    { "label": "GitHub", "href": "https://github.com/Fa-ce" },
+    { "label": "掘金", "href": "https://juejin.cn/user/2208289293877069" },
+    { "label": "GitBook", "href": "https://projects-organization-4.gitbook.io/fa-ce" }
+  ]
+}

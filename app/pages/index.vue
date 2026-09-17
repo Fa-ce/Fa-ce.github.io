@@ -141,15 +141,14 @@ const restPosts = computed(() => recentPosts.value?.slice(1) ?? [])
         <p class="u-meta mt-2">按主题浏览文章和文档</p>
       </header>
 
-      <!-- 非对称：首个分类占 6/12 大格，其余 3/12 四联排 -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
+      <!-- 8 个分类等分两行：sm 两列、lg 四列 -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <CategoryCard
-          v-for="(cat, i) in CATEGORIES"
+          v-for="cat in CATEGORIES"
           :key="cat.slug"
           :slug="cat.slug"
           :name="cat.name"
           :desc="cat.desc"
-          :class="i === 0 ? 'cat-feature sm:col-span-2 lg:col-span-6' : 'lg:col-span-3'"
         />
       </div>
     </section>
@@ -200,15 +199,6 @@ const restPosts = computed(() => recentPosts.value?.slice(1) ?? [])
 .cta-secondary:hover {
   background: var(--code-bg);
   border-color: var(--border-strong);
-}
-
-/*
-  分类首格差异化：CategoryCard 的底色写在内联 style 上，外部类选择器压不过，
-  故改为重映射它取用的 --surface；金色左边条呼应非对称布局的主次关系。
-*/
-.cat-feature {
-  --surface: var(--accent-soft);
-  box-shadow: inset 4px 0 0 var(--accent);
 }
 
 .view-all {
